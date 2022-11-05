@@ -358,3 +358,36 @@ footer{
         grid-template-columns: 1fr 400px;
     }
 }
+.section{
+    background-color: #aacac5;
+    /* display: flex; */
+}
+
+.setting{
+    display: flex;
+}
+
+.right{
+    display: flex;
+    /* float: right; */
+    flex-direction: row-reverse;
+    width: 100%;
+}
+.left{
+    display: flex;
+}
+
+.section_setting{
+    height: 3rem;
+    background-color: #aacac5;
+    width: 3rem;
+    border: 1px solid #ffff;
+}
+.content{
+    width:5rem !important;
+}
+.img_setting{
+    height: 2rem;
+    width: 2rem;
+    background-color: #aacac5;
+}

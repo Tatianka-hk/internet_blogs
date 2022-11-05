@@ -1,0 +1,153 @@
+.section{
+    background-color: #aacac5;
+    /* height: 50vh; */
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    padding-left: 1rem;
+    padding-right:1rem;
+}
+
+.texto_centro{
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color:#6E0D25;
+}
+.text-muted{
+    margin-left: 0;
+    margin-right: 0;
+    color:#6E0D25;
+}
+
+
+.sA1{
+    display: grid;
+    place-items: center;
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+.hA1{
+    align-self: baseline;
+}
+.dA1{
+    align-self: baseline;
+}
+
+
+
+.sA2{
+    padding-top: 3rem;
+}
+
+
+
+.sA3, .sA4, .sA7{
+    display: grid;
+    place-items: center;
+}
+
+.iA3{
+    border-radius:50%;
+    width: 20rem;
+}
+
+.iA4{
+    width: 100%;
+    height:80%;
+}
+
+.sA4{
+    padding-bottom:0;
+}
+.sA5, .sA6, .sA8, sA9, .sA10{
+    display: grid;
+}
+
+
+.tA5, .tA6, .tA8, .pA8, .pA10 , .tA10{
+    display: grid;
+    place-items: center;
+}
+
+.iA5, .iA6, .iA81{
+    width: 100% ;
+    /* height:80%; */
+}
+
+.pA7, .p1A8, .p1A10{
+    display:flex;
+    justify-content: center;
+
+}
+.iA7{
+    width:30%; 
+}
+
+.iA8{
+    height: 15rem;
+    width: 50%;
+    margin-right: -1%;
+}
+
+.iA9{
+    height: 100%;
+    width: 100%;
+}
+.tA9{
+    text-align: center;
+    padding: 0.2rem;
+    place-self: end;
+    margin-top: 20%;
+    width: 100%;
+    
+}
+
+.iA10{
+    width: 10rem;
+    height: 10rem;
+}
+
+@media (min-width: 792px){
+    .text-muted{
+        margin-left: 5rem;
+        margin-right: 5rem;
+        color:#6E0D25;
+    }
+    .sA2{
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+    .iA4{
+        width: 90%;
+        height:70%;
+        margin-bottom: -12%;
+    }
+    .dA4{
+        margin-bottom: -12%;
+    }
+    .sA5, .sA6, .sA8, .sA9, .sA10{
+        display: flex;
+    }
+    .iA8{
+        height: 15rem;
+        width: 50%;
+        margin-right: -1%;
+    }
+    .iA81{
+        width: auto;
+    }
+    
+    .tA9{
+        background-color: #fff;
+    }
+    .iA10{
+        height: 15rem;
+        width:15rem;
+        margin-right: -1%;
+    }
+    .pA10{
+        width: 500%;
+    }
+    
+}
