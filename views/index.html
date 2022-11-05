@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css" />
+    <title>Start</title>
+</head>
+<body id="page-top">
+    <nav>
+        <a class="brand" href="#page-top">
+            FABULA
+        </a>
+        <div class="navbar-list">
+            <div class="nav-item"><a class="nav-link" href="#contact">Contact</a></div>
+            
+            <div class="nav-item"><a class="nav-link" href="/views/register.html">Register</a></div>
+            <div class="nav-item"><a class="nav-link" href="/views/login.html">Login</a></div>
+            
+        </div>
+            
+    </nav>
+    <header>
+            <div class="titulo">FABULA</div>
+                <br>
+                <div class="lema">Create your blog!</div>
+        
+    </header>    
+    <section class="page-section" id="services">
+            <div class="texto_centro">
+                <h2 class="section-heading text-uppercase">Services</h2>
+            </div>
+                    <h4 class="my-3">Speed</h4>
+                    <p class="text-muted">You can quickly make your internet blog on this site.</p>
+                    <h4 class="my-3">Responsive Design</h4>
+                    <p class="text-muted">Your sites will be flexible and will change as the screen size changes. So, your sites will look good  on the screen of a laptop, tablet and a phone.</p>
+                    <h4 class="my-3">A variety of tools</h4>
+                    <p class="text-muted">You will be able to upload videos, photos, audio content, apply different styles and colors, fonts and sizes.</p>
+    </section>
+   
+    <section class="page-section" id="contact">
+            <h2 class="texto_centro">Contact Us</h2>
+            <form id="contactForm">
+                <div class="mb-5">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center">
+                        Form submission successful!
+                        <br>
+                        To activate this form, sign up at
+                    </div>
+                </div>
+                <div class="d-none" id="submitErrorMessage"><div class="text-center">Error sending message!</div></div>
+                <button class="send_message" id="submitButton" type="submit">Send Message</button>
+                </form>
+    </section>
+    <footer>
+        Copyright &copy; Your Website 2022
+    </footer>
+  
+</body>
+</html>
