@@ -13,40 +13,75 @@
             FABULA
         </a>
     </nav>
-    <section class="page-section" id="blog" >
-    <div class="section">
-        <div class="setting">
-            <div class="left">
-                <button class="section_setting">A1▼</button>
-                <button class="section_setting content">Content</button>
+    <main id="main1">
 
-            </div>
-            <div class ="right">
-                <button class="section_setting"><img class="img_setting" src="/static/img/edit.png"></button>
-                <button class="section_setting"><img class="img_setting"  src="/static/img/delete.png"></button>
-                <button class="section_setting"><img class="img_setting"  src="/static/img/on.png"></button>
-                <button class="section_setting">▲</button>
-                <button class="section_setting">▼</button>
-                
-            </div>
-            
-
+    
+    <div  id ="left1">
+        <div id="header_of_left">
+            <div class="brand">Sections</div>
+            <button class="cerrar brand" onclick="cerrar()">X</button>
 
         </div>
-        <h4 class="texto_centro">Blog1</h4>
-        <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in 
-            cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere 
-            deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur
-             adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, 
-             deleniti numquam nisi temporibus</p>
+        <button class="boton_type_of_section">
+            <a class="in_boton brand" href="/views/create_blog.html">HEADER</a>
+        </button>
+        <button class="boton_type_of_section">
+            <a class="in_boton brand" href="/views/create_blog.html">COVER</a>
+        </button>
+        <button class="boton_type_of_section">
+            <a class="in_boton brand" href="/views/create_blog.html">ABOUT</a>
+        </button>
+        <button class="boton_type_of_section">
+            <a class="in_boton brand" href="/views/create_blog.html">POST</a>
+        </button>
+        <button class="boton_type_of_section">
+            <a class="in_boton brand" href="/views/create_blog.html">FOOTER</a>
+        </button>
+        <!-- <button class="add_proyect"> -->
+        
     </div>
+    <div id="centre1">
+            <!-- <section class="page-section " id="blog" > -->
+                <div class="section blog_section">  
+                    <div class="setting">
+                        <div class="left">
+                            <button class="section_setting">A1▼</button>
+                            <button class="section_setting content">Content</button>
+            
+                        </div>
+                        <div class ="right">
+                            <button class="section_setting"><img class="img_setting" src="/static/img/edit.png"></button>
+                            <button class="section_setting"><img class="img_setting"  src="/static/img/delete.png"></button>
+                            <button class="section_setting"><img class="img_setting"  src="/static/img/on.png"></button>
+                            <button class="section_setting">▲</button>
+                            <button class="section_setting">▼</button>
+                            
+                        </div>
+                        
+            
+            
+                    </div>
+                 
+                    <h4 class="texto_centro">Blog1</h4>
+                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in 
+                        cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere 
+                        deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, 
+                         deleniti numquam nisi temporibus</p>
+                </div>
+            
+                <!-- </section> -->
+                <button class="add_section" onclick="view_types_of_section()">
+                    ADD
+                </button>
 
-    </section>
-    <button id="start" onclick="create_section()">
+    </div>
+ 
+    
+    <!-- <button id="start" onclick="create_section()">
         Start
-    </button>
-    <!-- <footer>
-        Copyright &copy; Your Website 2022
-    </footer> -->
+    </button> -->
+</main>
 </body>
+<script src="/static/js/index.js"></script>
 </html>

@@ -2,8 +2,8 @@ function button_on_click(){
     if( document.getElementById("left").style.display =='grid'){
         document.getElementById("left").style.display='none';
         document.getElementById("centre").style.display='grid';
-        document.getElementById("Footer").style.position='inherit';
-        document.getElementById("main").style.position='inherit';
+        document.getElementById("Footer").style.position='absolute';
+        document.getElementById("main").style.position='absolute';
     }
     else{
         document.getElementById("centre").style.display='none';
@@ -47,6 +47,12 @@ function lwindow(){
     }
 }
 
-function create_section(){
-    
+function view_types_of_section(){
+    document.getElementById("left1").style.display="grid";
+    // document.getElementById("centre1").style.display='none';
+}
+
+function cerrar(){
+    document.getElementById("left1").style.display="none";
+    // document.getElementById("centre1").style.display='grid';
 }
