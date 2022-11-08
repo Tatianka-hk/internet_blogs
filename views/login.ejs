@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css" />
-    <title>Login</title>
-</head>
+<%- include('./partials/head.ejs')  %> 
 <body id="page-top" class="loginBody">
-    <nav>
-        <a class="brand" href="index.html">
-            FABULA
-        </a>
-        
-    </nav>
+    <%- include('./partials/gorro.ejs')  %> 
     <section class="page-section" id="register">
         <form id = "registerForm">
             <div class="mb-1">
@@ -26,8 +15,14 @@
                         <div class="invalid-feedback" data-sb-feedback="email:required">An password is required.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">Password is not valid.</div>
                     </div>
-            <button class="send_message" id="submitLogin" type="submit">Login</button>
-
+            <button class="send" id="submitLogin" type="submit">Login</button>
+            <div class="errors" >
+                <% if(typeof alert != 'undefined') { %>
+                    <% alert.forEach(function(error) { %>
+                           <h3> <%= error.msg %></h3>
+                    <% }) %>
+                <% } %>
+            </div>
         </form>
     </section>
     <footer class="loginFooter">

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="stylesheet" href="../static/style.css" />
+    <link rel="stylesheet" href="../static/style1.css" />
 </head>
 <body  id="page-top" class="loginBody">
     <nav>
@@ -22,30 +23,48 @@
             <button class="cerrar brand" onclick="cerrar()">X</button>
 
         </div>
-        <button class="boton_type_of_section">
-            <a class="in_boton brand" href="/views/create_blog.html">HEADER</a>
+        <button class="boton_type_of_section" onclick="view_types_of_block('header')">
+            <div class="in_boton brand">HEADER</div>
         </button>
-        <button class="boton_type_of_section">
-            <a class="in_boton brand" href="/views/create_blog.html">COVER</a>
+        <button class="boton_type_of_section" onclick="view_types_of_block('cover')">
+            <div class="in_boton brand">COVER</div>
         </button>
-        <button class="boton_type_of_section">
-            <a class="in_boton brand" href="/views/create_blog.html">ABOUT</a>
+        <button class="boton_type_of_section" onclick="view_types_of_block('about')">
+            <div class="in_boton brand">ABOUT</div>
         </button>
-        <button class="boton_type_of_section">
-            <a class="in_boton brand" href="/views/create_blog.html">POST</a>
+        <button class="boton_type_of_section" onclick="view_types_of_block('footer')">
+            <div class="in_boton brand">POSTS</div>
         </button>
-        <button class="boton_type_of_section">
-            <a class="in_boton brand" href="/views/create_blog.html">FOOTER</a>
+        <button class="boton_type_of_section" onclick="view_types_of_block('footer')">
+            <div class="in_boton brand">FOOTER</div>
         </button>
         <!-- <button class="add_proyect"> -->
         
     </div>
+    <div id="types_of_block">
+        <!-- <button class="choose_type" onclick="choose_type()">
+            adfkefa
+            ewgaEGARG
+            sgehesh
+        </button>
+        <button class="choose_type" onclick="choose_type()">
+            adfkefa
+            ewgaEGARG
+            sgehesh
+        </button> -->
+    </div>
     <div id="centre1">
+        <div id="user_blog">
             <!-- <section class="page-section " id="blog" > -->
                 <div class="section blog_section">  
                     <div class="setting">
                         <div class="left">
-                            <button class="section_setting">A1▼</button>
+                            <select  id='selector' class="section_setting">
+                                
+                                <option>F1</option>
+                                <option>F2</option>
+                                <option>F3</option>
+                            </select>
                             <button class="section_setting content">Content</button>
             
                         </div>
@@ -61,7 +80,7 @@
             
             
                     </div>
-                 
+
                     <h4 class="texto_centro">Blog1</h4>
                     <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in 
                         cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere 
@@ -69,6 +88,7 @@
                          adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, 
                          deleniti numquam nisi temporibus</p>
                 </div>
+            </div>
             
                 <!-- </section> -->
                 <button class="add_section" onclick="view_types_of_section()">
@@ -83,5 +103,6 @@
     </button> -->
 </main>
 </body>
+<script src="/static/js/template.js"></script>
 <script src="/static/js/index.js"></script>
 </html>

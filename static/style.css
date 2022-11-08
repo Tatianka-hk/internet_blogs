@@ -4,7 +4,7 @@
     flex-direction: column;
 } */
 .loginBody{
-    background-color: #A7988B;
+    background-color: #494343;
 }
 
 nav{
@@ -75,7 +75,7 @@ header{
     text-align: center;
     height: 48vh;
     margin-left: -0.5rem;
-    margin-right: -0.55rem;
+    margin-right: -2rem;
 }
 .lema{
     font-size: 3.25rem;
@@ -106,7 +106,7 @@ header{
     background-color: #aacac5;
 }
 #contact{ 
-    background-color: #A7988B;
+    background-color: #494343;
 }
 #login, #register, #create_blog,#blog{
     padding-top: 5rem; 
@@ -175,12 +175,15 @@ header{
 .d-none{
     display: none;
 }
-.send_message{
+.errors{
+    display: grid;
+    color:#dc3545;
+
+}
+.send{
+    background-color: #aacac5;
+    border:none;
     color: #6E0D25;
-    background-color: #F1EBE4;
-    border-color: #F1EBE4;
-    pointer-events: none;
-    opacity: 0.65;
     padding: 1.25rem 2.5rem;
     font-size: 1.125rem;
     font-weight: 700;
@@ -222,7 +225,7 @@ main{
 }
 #left1{
     background-color:  #ABAFB7;;
-    width:80%;
+    width:30%;
     height: auto;
     top: 0;
     padding-top: 3.5rem;
@@ -230,10 +233,28 @@ main{
     text-align: center;
     color: #6E0D25;
     align-content: flex-start;
-    position: absolute;
+    position: fixed;
+    margin-left: -5%;
     z-index: 9;
 
+
 }
+#types_of_block{
+    background-color: #ABAFB7;
+    display: none;
+    width: auto;
+    position: absolute;
+    z-index: 9;
+    padding-top: 3.2rem;
+    max-height: 91vh;
+    height: auto;
+    margin-left: 25%;
+    overflow-y: scroll;
+    position: fixed;
+}
+
+
+
 .add_proyect{
 
     background-color: #aacac5;
@@ -294,7 +315,9 @@ footer{
     margin-right: -2%;
     margin-left: -2%;
 }
-
+.index{
+    margin-right: -2rem;
+}
 
 .loginFooter{
     position: fixed;
@@ -305,8 +328,8 @@ footer{
 
 .section{
     background-color: #aacac5;
-    margin-top: 5rem;
-    padding-bottom: 3rem;
+    margin-top: 0rem;
+    /* padding-bottom: 3rem; */
     /* display: flex; */
 }
 
@@ -343,6 +366,7 @@ footer{
 
 .blog_section{
     margin-bottom: 0;
+    border: 1px solid;
 }
 
 .add_section{
@@ -377,6 +401,15 @@ footer{
     display: flex;
     justify-content: space-between;
 }
+
+.choose_type{
+    width: 17rem;
+    height: 12rem;
+    background-position:center center;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 @media (min-width: 792px){
     .navbar{
         flex-wrap: nowrap;
@@ -389,9 +422,13 @@ footer{
         margin-right:1%;
         transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
     }
+    header{
+        margin-right: -0.5rem;
+    }
     .page-section{
         margin-left: -0.5rem;
         margin-right: -0.5rem;
+        /* margin-right: -2rem; */
     }
     .nav-link {
         padding-right: 0.5rem;
@@ -432,10 +469,22 @@ footer{
         display:none;
     }
     #left, #left1{
-        display: grid;
+        display: none;
         width: 20%;
         min-width: 238px;
+        margin-left: 0;
         
+    }
+    #types_of_block{
+        margin-left: 20%;
+        /* height: 91%; */
+        max-height: 91vh;
+        height: auto;
+        width:auto;
+    }
+    .choose_type{
+        width:30rem;
+        height: 10rem;
     }
     #user_data{
         padding-left: 15%;
@@ -456,6 +505,11 @@ footer{
         margin-right: -0.5%;
         margin-left: -0.5%;
     }
+    .index{
+        margin-right: -0.5%;
+        /* margin-right: -2rem; */
+    }
+    
     #Footer{
         margin-right: -0.5%;
         margin-left: -0.5%;
@@ -463,10 +517,16 @@ footer{
     .add_section{
         margin-top: -1%;
     }
+    #message{
+        height: 206px;
+    }
 }
 
 @media (min-width: 1068px){
     #proyects{
         grid-template-columns: 1fr 400px;
     }
+}
+.green{
+    color:#aacac5
 }

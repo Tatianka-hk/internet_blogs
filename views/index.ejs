@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs')  %> 
+<body id="page-top">
+    <nav>
+        <a class="brand" href="#page-top">
+            FABULA
+        </a>
+        <div class="navbar-list">
+            <div class="nav-item"><a class="nav-link" href="#contact">Contact</a></div>
+            
+            <div class="nav-item"><a class="nav-link" href="/register">Register</a></div>
+            <div class="nav-item"><a class="nav-link" href="/login">Login</a></div>
+            
+        </div>
+            
+    </nav>
+    <header>
+            <div class="titulo">FABULA</div>
+                <br>
+                <div class="lema">Create your blog!</div>
+        
+    </header>    
+    <section class="page-section" id="services">
+            <div class="texto_centro">
+                <h2 class="section-heading text-uppercase">Services</h2>
+            </div>
+                    <h4 class="my-3">Speed</h4>
+                    <p class="text-muted">You can quickly make your internet blog on this site.</p>
+                    <h4 class="my-3">Responsive Design</h4>
+                    <p class="text-muted">Your sites will be flexible and will change as the screen size changes. So, your sites will look good  on the screen of a laptop, tablet and a phone.</p>
+                    <h4 class="my-3">A variety of tools</h4>
+                    <p class="text-muted">You will be able to upload videos, photos, audio content, apply different styles and colors, fonts and sizes.</p>
+    </section>
+   
+    <section class="page-section" id="contact">
+            <h2 class="texto_centro green">Contact Us</h2>
+            <form method="post">
+                <div class="mb-5">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" name="name" type="text" placeholder="Your Name *" >
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="email" type="email" placeholder="Your email *" >
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="phone" type="phone" placeholder="Your phone *" >
+                        </div>                         
+                    </div>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="message" name="message" placeholder="Your Message *" ></textarea>
+                    </div>
+                  
+                    
+                </div>
+                <div class="errors" >
+                    <% if(typeof alert != 'undefined') { %>
+                        <% alert.forEach(function(error) { %>
+                               <h3> <%= error.msg %></h3>
+                        <% }) %>
+                    <% } %>
+                </div>
+               
+                <button class="send" name="submitButton" type="submit">Send Message</button>
+            </form>
+          
+    </section>
+    <footer class="index">
+        Copyright &copy; Your Website 2022
+    </footer>
+  
+</body>
+</html>
