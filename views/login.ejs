@@ -4,25 +4,20 @@
 <body id="page-top" class="loginBody">
     <%- include('./partials/gorro.ejs')  %> 
     <section class="page-section" id="register">
-        <form id = "registerForm">
+        <form id = "registerForm" method="post">
             <div class="mb-1">
-                    <div class="form-group">
-                        <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" id="password" type="password" placeholder="Your Passord *" data-sb-validations="required,password" />
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An password is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Password is not valid.</div>
-                    </div>
-            <button class="send" id="submitLogin" type="submit">Login</button>
+                        <input class="form-control" name="name" type="text" placeholder="Your Name *"  />
+                        <input class="form-control" name="password" type="password" placeholder="Your Password *" data-sb-validations="required,password" />
+           
             <div class="errors" >
                 <% if(typeof alert != 'undefined') { %>
-                    <% alert.forEach(function(error) { %>
-                           <h3> <%= error.msg %></h3>
-                    <% }) %>
+                           <h3> <%= alert[0].msg %></h3>
+                <% } %>
+                <% if(typeof no_matching != 'undefined') { %>
+                           <h3>  No correct password or name </h3>
                 <% } %>
             </div>
+            <button class="send" id="submitLogin" type="submit">Login</button>
         </form>
     </section>
     <footer class="loginFooter">
