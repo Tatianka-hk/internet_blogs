@@ -11,24 +11,30 @@
     <main id="main">
         <div  id ="left">
             <div id ="user_data">
-                <table class = 'table1'>
-                    <tr id="row_user_name">
-                        <td  id="user_name">Tetiana Gurkivska</td>
-                        <td><button class="buttonedit" onclick="for_change_name()"><img class="imgedit" src="/img/edit.png"></button></td>
-                      </tr>
-                      <tr id="row_user_email">
-                        <td id=user_email">t0681689150@gmail.com</td>
-                        <td><button class="buttonedit" onclick="for_change_email()"><img class="imgedit" src="/img/edit.png"></button></td>
-                      </tr>
-                </table>                
+                        <div id="row_user_name">
+                            <div  id="user_name"><%= user.name  %> </div>
+                            <div><button class="buttonedit" onclick="for_change_name()"><img class="imgedit" src="/img/edit.png"></button></div>
+                        </div>
+                        <div id="row_user_email">
+                            <div  id="user_email"><%= user.email  %></div>
+                            <div><button class="buttonedit" onclick="for_change_email()"><img class="imgedit" src="/img/edit.png"></button></div>
+                        </div>
             </div>
             <button class="add_proyect">
-                <a class="in_boton" href="/views/create_blog.html">Create blog</a>
+                <a class="in_boton" href="/user/<%= user._id %>/create_blog">Create blog</a>
             </button>
         </div>
         <div id="centre">
             <div id="proyects">
-                <div class = "proyect">
+                <% if (user.blogs.length) { %>
+                    <% user.blogs.forEach(( blog ) => { %>
+                        <div class = "proyect" style="color:black">
+                           <a href="/user/<%= user._id %>/blog/<%= blog["name"] %>"</a><%= blog["name"] %></a> 
+                        </div>
+
+                    <% }) %>
+                    <% } %>  
+                <!-- <div class = "proyect">
                 </div>
                 <div class = "proyect">
                 </div>
@@ -39,7 +45,7 @@
                 <div class = "proyect">
                 </div>
                 <div class = "proyect">
-                </div>
+                </div> -->
             </div>
         </div>
         
@@ -49,7 +55,8 @@
     <footer id = "Footer">
         Copyright &copy; Your Website 2022
     </footer>
+    <script src="/js/index.js"></script>
   
 </body>
-<script src="/js/index.js"></script>
+
 </html>

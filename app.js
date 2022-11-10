@@ -3,10 +3,11 @@ const mongoose=require('mongoose');
 const path = require('path');
 var sha256 = require('js-sha256')
 const User = require('./models/user')
-const {message_check,register_check,login_checker} = require('./middleware/check')
+const {message_check,register_check,login_checker,blog_checker} = require('./middleware/check')
 
 
-const { check, validationResult, body } = require('express-validator')
+const { check, validationResult, body } = require('express-validator');
+const { ResultWithContext } = require('express-validator/src/chain');
 require('dotenv').config()
 
 const app =  express();
@@ -50,7 +51,7 @@ app.get('/login', (req,res) =>{
     res.render("login.ejs",{title})
 })
 app.post('/login',login_checker, (req,res) =>{
-    console.log("lol")
+
     const title="Login"
     const errors = validationResult(req)
     if(!errors.isEmpty()) {
@@ -67,8 +68,8 @@ app.post('/login',login_checker, (req,res) =>{
             .findOne({ name:req.body.name , password:pas})
             .then((result)=>{ 
                 if (result!= null){
-                    res.render("account.ejs",{title:"Personal account"})}
-                
+                    res.redirect(`/user/${result["_id"]}`)
+                }                
                 else{
                     const no_matching="no correct"
                     res.render('login', { title,no_matching})
@@ -97,6 +98,92 @@ app.post('/register', register_check, (req,res) =>{
         pass+=req.body.password
         let user = new User({ name:req.body.name,email:req.body.email, password:pass});
         user.save();
-        res.render("account.ejs",{title:"Personal account"})
+        res.redirect(`/user/${user["_id"]}`)
     }
+})
+app.get('/user/:id', (req,res)=>{
+    User
+        .findOne({_id:req.params.id})
+        .then((result)=>{ 
+            console.log(result)
+            res.render("account.ejs",{title:"Personal account", user:result}) })
+})
+
+
+app.post('/user/:id', (req,res)=>{
+    console.log("POST")
+    console.log(req.body.edit_name_input)
+    console.log(req.body.edit_email_input)
+    if (req.body.edit_name_input != undefined && req.body.edit_name_input != ''  ){
+        User
+            .findOneAndUpdate({_id:req.params.id}, {name:req.body.edit_name_input})
+            .then((result)=>{
+                // console.log("===========================================")
+                // console.log("updated info")
+                // console.log(result)  
+                // console.log("===========================================")
+            })
+
+    }
+    if (req.body.edit_email_input != undefined && req.body.edit_email_input != ''  ){
+        User
+            .findOneAndUpdate({_id:req.params.id}, {email:req.body.edit_email_input})
+            .then((result)=>{
+                // console.log("===========================================")
+                // console.log("updated info")
+                // console.log(result)  
+                // console.log("===========================================")
+            })
+
+    }
+   if(req.body.edit_name_input == ''){console.log("null")}
+    res.redirect(`/user/${req.params.id}`);
+})
+
+app.get('/user/:id/create_blog', (req,res)=>{
+    User
+        .findOne({_id:req.params.id})
+        .then((result)=>{ 
+            // console.log(result)
+            res.render("create_blog.ejs",{title:"creating blog", user:result}) })
+})
+
+
+app.post('/user/:id/create_blog',blog_checker, (req,res)=>{
+    const errors = validationResult(req)
+    const title="Creating blog"
+    if(!errors.isEmpty()) {
+        const alert = errors.array()
+        res.render('create_blog', { title, alert })
+    }
+    else{
+        let new_blog={name: req.body.name }
+        console.log(new_blog)
+        User
+        .findOneAndUpdate({_id:req.params.id}, {blogs:new_blog})
+        .then((result)=>{ 
+              console.log("===========================================")
+                console.log("updated info")
+                console.log(result)  
+                console.log("===========================================")
+            // res.render("create_blog.ejs",{title:"creating blog", user:result})
+         })
+         
+    }
+    res.redirect(`/user/${req.params.id}/blog/${req.body.name}`)
+    
+})
+
+app.get(`/user/:id/blog/:name`,(req,res)=>{
+    User
+    .findOne({_id:req.params.id})
+    .then((result)=>{ 
+        console.log("===========================================")
+        console.log("buscando info")
+        console.log(result)  
+        console.log("===========================================")
+        res.render("blog.ejs",{title:"Blog"}) 
+    })
+   
+    // res.render("blog", {title:"Blog"})
 })

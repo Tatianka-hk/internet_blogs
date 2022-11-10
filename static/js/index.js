@@ -15,16 +15,14 @@ function button_on_click(){
 }
 
 function for_change_name(){
-    document.getElementById("row_user_name").innerHTML = '<td  id="user_name"><input id="edit_name_input" type="text" placeholder="Your Name *" data-sb-validations="required"/>\
-    <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div></td>\
-<td><button class="buttonchange" onclick="change_name()">edit</button></td>'
+    document.getElementById("row_user_name").innerHTML = '<form method="post"><div  id="user_name"><input name="edit_name_input" type="text" placeholder="Your Name *" />\
+   </div>\
+<div><button class="buttonchange" type="submit" onclick="change_name()">edit</button></div> </form>'
 }
 
 function for_change_email(){
-    document.getElementById("row_user_email").innerHTML = '<td  id="user_email"><input id="edit_email_input" type="email" placeholder="Your Email *" data-sb-validations="required,email"/>\
-    <div class="invalid-feedback" data-sb-feedback="email:required">A email is required.</div></td>\
-    <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>\
-<td><button class="buttonchange" onclick="change_email()">edit</button></td>'
+    document.getElementById("row_user_email").innerHTML = '<form method="post"><div  id="user_email"><input name="edit_email_input" type="email" placeholder="Your Email *" /></div>\
+<div><button class="buttonchange"  type="submit" onclick="change_email()">edit</button></div> </form>'
 }
 
 function change_name(){
@@ -168,11 +166,11 @@ function demo(c, s, h){
 //         });
 
 //     });
-var selector = document.getElementById('selector')
+// var selector = document.getElementById('selector')
 
     
     
-selector.addEventListener('change', function() {
-    var index = selector.value;
-    console.log(index)
-})    
+// selector.addEventListener('change', function() {
+//     var index = selector.value;
+//     console.log(index)
+// })    

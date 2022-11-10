@@ -270,7 +270,7 @@ main{
 
 #user_data{
     border-bottom: solid 1px black;
-    height: 10vh;
+    height: 12vh;
     padding-top: 1rem;
     padding-left: 20%;
 }
@@ -469,8 +469,8 @@ footer{
         display:none;
     }
     #left, #left1{
-        display: none;
-        width: 20%;
+        display: grid;
+        width: 30%;
         min-width: 238px;
         margin-left: 0;
         

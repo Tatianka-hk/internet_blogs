@@ -32,12 +32,12 @@ const userSchema =  new Schema({
             name_of_section:{
                 type:String
             },
-            width:{
-                type:Number
-            },
-            height:{
-                type:Number
-            }
+            // width:{
+            //     type:Number
+            // },
+            // height:{
+            //     type:Number
+            // }
         }]
     }]
 })

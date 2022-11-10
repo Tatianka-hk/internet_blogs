@@ -28,7 +28,15 @@ const login_checker=[
     check('name', 'Name is no inputed')
     .notEmpty(),
     check('password', 'Password is no inputed')
-    .notEmpty() ]
+    .notEmpty()
+]
+
+const blog_checker=[
+    check('name', 'Name is no inputed')
+    .notEmpty()
+]
 
 
-    module.exports = {message_check,register_check,login_checker};    
+
+
+    module.exports = {message_check,register_check,login_checker,blog_checker};    

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs')  %> 
+<body  id="page-top" class="loginBody">
+    <nav>
+        <a class="brand" href="index.html">
+            FABULA
+        </a>
+    </nav>
+    <main id="main1">
+
+    
+    <div  id ="left1">
+        <div id="header_of_left">
+            <div class="brand">Sections</div>
+            <button class="cerrar brand" onclick="cerrar()">X</button>
+
+        </div>
+        <button class="boton_type_of_section" onclick="view_types_of_block('header')">
+            <div class="in_boton brand">HEADER</div>
+        </button>
+        <button class="boton_type_of_section" onclick="view_types_of_block('cover')">
+            <div class="in_boton brand">COVER</div>
+        </button>
+        <button class="boton_type_of_section" onclick="view_types_of_block('about')">
+            <div class="in_boton brand">ABOUT</div>
+        </button>
+        <button class="boton_type_of_section" onclick="view_types_of_block('footer')">
+            <div class="in_boton brand">POSTS</div>
+        </button>
+        <button class="boton_type_of_section" onclick="view_types_of_block('footer')">
+            <div class="in_boton brand">FOOTER</div>
+        </button>
+        <!-- <button class="add_proyect"> -->
+        
+    </div>
+    <div id="types_of_block">
+        <!-- <button class="choose_type" onclick="choose_type()">
+            adfkefa
+            ewgaEGARG
+            sgehesh
+        </button>
+        <button class="choose_type" onclick="choose_type()">
+            adfkefa
+            ewgaEGARG
+            sgehesh
+        </button> -->
+    </div>
+    <div id="centre1">
+        <div id="user_blog">
+            <!-- <section class="page-section " id="blog" > -->
+                <div class="section blog_section">  
+                    <div class="setting">
+                        <div class="left">
+                            <select  id='selector' class="section_setting">
+                                
+                                <option>F1</option>
+                                <option>F2</option>
+                                <option>F3</option>
+                            </select>
+                            <button class="section_setting content">Content</button>
+            
+                        </div>
+                        <div class ="right">
+                            <button class="section_setting"><img class="img_setting" src="/img/edit.png"></button>
+                            <button class="section_setting"><img class="img_setting"  src="/img/delete.png"></button>
+                            <button class="section_setting"><img class="img_setting"  src="/img/on.png"></button>
+                            <button class="section_setting">▲</button>
+                            <button class="section_setting">▼</button>
+                            
+                        </div>
+                        
+            
+            
+                    </div>
+
+                    <h4 class="texto_centro">Blog1</h4>
+                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in 
+                        cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere 
+                        deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, 
+                         deleniti numquam nisi temporibus</p>
+                </div>
+            </div>
+            
+                <!-- </section> -->
+                <button class="add_section" onclick="view_types_of_section()">
+                    ADD
+                </button>
+
+    </div>
+ 
+    
+    <!-- <button id="start" onclick="create_section()">
+        Start
+    </button> -->
+</main>
+</body>
+<script src="/js/template.js"></script>
+<script src="/js/index.js"></script>
+</html>
