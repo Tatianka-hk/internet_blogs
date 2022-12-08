@@ -1,5 +1,5 @@
 .section{
-    background-color: #aacac5;
+    /* background-color: #aacac5; */
     /* height: 50vh; */
     padding-top: 1rem;
     padding-bottom: 3rem;
@@ -11,12 +11,12 @@
     font-size: 3.25rem;
     font-weight: 700;
     /* line-height: 1.5rem; */
-    color:#6E0D25;
+    /* color:#6E0D25; */
 }
 .text-muted{
     margin-left: 0;
     margin-right: 0;
-    color:#6E0D25;
+    /* color:#6E0D25; */
     font-size: 2rem;
 }
 
@@ -131,7 +131,7 @@
     .text-muted{
         margin-left: 5rem;
         margin-right: 5rem;
-        color:#6E0D25;
+        /* color:#6E0D25; */
     }
     .sA2{
         padding-top: 10rem;

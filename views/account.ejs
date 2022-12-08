@@ -7,6 +7,10 @@
             FABULA
         </a>
         <button class="buttonmenu" onclick="button_on_click()"><img class="imgmenu" src="/img/menu.png"></button>
+        <div class="navbar-list">
+            <div class="nav-item"><a class="nav-link" href="/">Logout</a></div>
+        </div>
+       
     </nav>
     <main id="main">
         <div  id ="left">
@@ -19,9 +23,18 @@
                             <div  id="user_email"><%= user.email  %></div>
                             <div><button class="buttonedit" onclick="for_change_email()"><img class="imgedit" src="/img/edit.png"></button></div>
                         </div>
+                        <div class="errors" >
+                            <% if(typeof alert != 'undefined') { %>
+                                       <h3> <%= alert %></h3>
+                            <% } %>
+
+                        </div>
             </div>
             <button class="add_proyect">
                 <a class="in_boton" href="/user/<%= user._id %>/create_blog">Create blog</a>
+            </button>
+            <button class="add_proyect">
+                <a class="in_boton" data-id="<%= user["_id"] %>">Delete account</a>
             </button>
         </div>
         <div id="centre">
@@ -29,23 +42,11 @@
                 <% if (user.blogs.length) { %>
                     <% user.blogs.forEach(( blog ) => { %>
                         <div class = "proyect" style="color:black">
-                           <a href="/user/<%= user._id %>/blog/<%= blog["name"] %>"</a><%= blog["name"] %></a> 
+                           <a href="/user/<%= user._id %>/blog/<%= blog["block_name"] %>"</a><%= blog["block_name"] %></a> 
                         </div>
 
                     <% }) %>
                     <% } %>  
-                <!-- <div class = "proyect">
-                </div>
-                <div class = "proyect">
-                </div>
-                <div class = "proyect">
-                </div>
-                <div class = "proyect">
-                </div>
-                <div class = "proyect">
-                </div>
-                <div class = "proyect">
-                </div> -->
             </div>
         </div>
         
@@ -55,7 +56,25 @@
     <footer id = "Footer">
         Copyright &copy; Your Website 2022
     </footer>
-    <script src="/js/index.js"></script>
+    <script>
+        document.addEventListener('click', (e) => {
+  const id = e.target?.dataset?.id || null;
+  if (id) {
+    fetch(`/user/${id}`, {
+      method: 'DELETE',
+    }).then(() => {
+        window.location.href = '/';
+    });
+  }
+});
+str = String('<%= access_token %>')
+if (str/lengt< 10 ) {
+    localStorage.setItem('access_token', '<%= access_token %>'); 
+}
+
+
+    </script>
+    <script src="/js/account.js"></script>
   
 </body>
 

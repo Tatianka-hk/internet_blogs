@@ -2,7 +2,11 @@
 <html lang="en">
 <%- include('./partials/head.ejs')  %> 
 <body id="page-top" class="loginBody">
-    <%- include('./partials/gorro.ejs')  %> 
+    <nav>
+        <a class="brand" href="/">
+            FABULA
+        </a>
+    </nav>
     <section class="page-section" id="register">
         <form id = "registerForm" method="post">
             <div class="mb-1">
@@ -23,6 +27,18 @@
     <footer class="loginFooter">
         Copyright &copy; Your Website 2022
     </footer>
-  
+  <script>
+at = localStorage.getItem('access_token')
+
+
+// var xhr = new window.XMLHttpRequest()
+// xhr.open('POST', '/auth/login', true)
+// xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+//          let lol = {
+//           "access_token":at
+//          }
+//          xhr.send(JSON.stringify(lol))
+//  console.log(at)
+  </script>
 </body>
 </html>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('./partials/head.ejs')  %> 
-<body  id="page-top" class="loginBody">
+<body  id="page-top" class='loginBody' onload='load_blocks("<%= data %>")' >
     <nav>
-        <a class="brand" href="index.html">
+        <a class="brand" href="/user/<%= user_id %>">
             FABULA
         </a>
     </nav>
     <main id="main1">
 
-    
+        
     <div  id ="left1">
         <div id="header_of_left">
-            <div class="brand">Sections</div>
+            <div class="brand"></div>
             <button class="cerrar brand" onclick="cerrar()">X</button>
 
         </div>
@@ -35,55 +35,159 @@
         
     </div>
     <div id="types_of_block">
-        <!-- <button class="choose_type" onclick="choose_type()">
-            adfkefa
-            ewgaEGARG
-            sgehesh
-        </button>
-        <button class="choose_type" onclick="choose_type()">
-            adfkefa
-            ewgaEGARG
-            sgehesh
-        </button> -->
     </div>
     <div id="centre1">
         <div id="user_blog">
-            <!-- <section class="page-section " id="blog" > -->
-                <div class="section blog_section">  
-                    <div class="setting">
-                        <div class="left">
-                            <select  id='selector' class="section_setting">
-                                
-                                <option>F1</option>
-                                <option>F2</option>
-                                <option>F3</option>
-                            </select>
-                            <button class="section_setting content">Content</button>
+            <% if( sections != null){ %> 
+            <% if (sections.length ) { %>
+                <% sections.forEach(( section ) => { %>
             
+                <div class="section blog_section" id='<%= section.id %>' style="background-color:#<%= section.backgorund_color %> ">
+                    <div class="change_style"  id='<%= section._id %>'>
+                        <div id="header_of_left_change">
+                            <div class="brand"></div>
+                            <button class="cerrar brand" onclick="cerrar_change_change_style('<%= section._id %>')">X</button>
+                
                         </div>
-                        <div class ="right">
-                            <button class="section_setting"><img class="img_setting" src="/img/edit.png"></button>
-                            <button class="section_setting"><img class="img_setting"  src="/img/delete.png"></button>
-                            <button class="section_setting"><img class="img_setting"  src="/img/on.png"></button>
-                            <button class="section_setting">▲</button>
-                            <button class="section_setting">▼</button>
+                        <div class="change_block">
+                        <h3 class="background_or_text">Background</h3>
+                        <div class="change_style_caja2">
+                            color 
+                            <div class="change_style_caja3">
+                                <div class="change_style_caja2">
+                                    #: (<input class="for_input_color h16 color_background " id='<%= section._id %>'></input>)
+                                </div>    
+                                <div id='<%= section._id %>' class="errors invalid_value_back" ></div>
+                                    <select id='<%= section._id %>'  class='herramineta in_change_style select_color_back' name='color'>\
+                                        <option value = "choose_color">choose color</option>
+                                        <option value="FFFF00">yellow</option>\
+                                        <option value="00FF00">green</option>\
+                                        <option value="0000FF">blue</option>\
+                                        <option value="ffffff">white</option>\
+                                        <option value="000000">black</option>\
+                                        <option value="828282">gris</option>\
+                                        <option value="ffc0cb">pink</option>\
+                                        <option value="FF0000">red</option>\
+                                        <option value="964B00">brown</option>\
+                                        <option value="BF40BF">purple</option>\
+                                    </select>
+                               
+                
+                            </div>
+                        </div>
+                        <div id='<%= section._id %>' class="errors no_back_color" ></div>
+                        <button  class="button_change" onclick ="change_background_color('<%= section._id %>')">Change background color</button>
+                    </div>
+                        <hr style=" height: 2px; width: 100%; background-color: #000000;">
+                        <div class="change_block">
+                        <h3 class="background_or_text">Text</h3>
+                        <div class="change_style_caja2">
+                            
+                            color
+                            <div class="change_style_caja3">
+                                <div class="change_style_caja2">
+                                #(<input id='<%= section._id %>' class="for_input_color h16 text_color"></input>)</div>
+                                <div id='<%= section._id %>' class="errors invalue_text_color" ></div>
+                                    <select id='<%= section._id %>' class='herramineta in_change_style select_text_color' name='color'>\
+                                        <option value = "choose_color">choose color</option>
+                                        <option value="FFFF00">yellow</option>\
+                                        <option value="00FF00">green</option>\
+                                        <option value="0000FF">blue</option>\
+                                        <option value="ffffff">white</option>\
+                                        <option value="000000">black</option>\
+                                        <option value="828282">gris</option>\
+                                        <option value="ffc0cb">pink</option>\
+                                        <option value="FF0000">red</option>\
+                                        <option value="964B00">brown</option>\
+                                        <option value="BF40BF">purple</option>\
+                                    </select>
+                                </div>
+                            
+                            </div>
+                            <div id='<%= section._id %>' class="errors no_text_color" ></div>
+                            <button class="button_change" onclick="change_text_color('<%= section._id %>')">Change text color</button>
+                        </div>
+                            <hr style=" height: 0.3px; width: 100%; background-color: #000000;">
+                            <!-- <div class="change_block">
+                        <br>
+                                <div class="change_style_caja2">
+                                    Size: 
+                                    <select class='herramineta in_change_style' name='Size'>
+                                        <option disabled>Size</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>4</option>
+                                        <option>6</option>
+                                        <option>8</option>
+                                        <option>10</option>
+                                        <option>12</option>
+                                        <option>16</option>
+                                        <option>18</option>
+                                        <option>20</option>
+                                        <option>22</option>
+                                        <option>24</option>
+                                        <option>26</option>
+                                        <option>28</option>
+                                        <option>30</option>
+                                    </select>
+                                    <button  class="button_change">Change text size</button>
+                                   
+                                    </div>
+                                </div>
+                                    <hr style=" height: 0.3px; width: 100%; background-color: #000000;"> -->
+                                    <div class="change_block">
+                                    <div class="change_style_caja2">
+                                    Font: 
+                                    <select  id='<%= section._id %>' class='herramineta in_change_style text_font' name='Font'>
+                                        <option value ="choose_font">Choose Font</option>
+                                        <option value ="Arial">Arial</option>
+                                        <option value ="Verdana">Verdana</option>
+                                        <option value ="Tahoma">Tahoma</option>
+                                        <option value ="Trebuchet MS">Trebuchet MS</option>
+                                        <option value ="Times New Roman">Times New Roman</option>
+                                        <option value ="Georgia">Georgia</option>
+                                        <option value ="Garamond">Garamond</option>
+                                        <option value ="Courier New">Courier New</option>
+                                        <option value ="Brush Script MT">Brush Script MT</option>
+                                    </select>
+                                    <div id='<%= section._id %>' class="errors no_choose_font" ></div>
+                                    <button  class="button_change" onclick="choose_font('<%= section._id %>')">Change text font</button>
+                                </div>
+                
                             
                         </div>
-                        
-            
-            
                     </div>
-
-                    <h4 class="texto_centro">Blog1</h4>
-                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in 
-                        cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere 
-                        deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur
-                         adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, 
-                         deleniti numquam nisi temporibus</p>
+                        
+                    <!-- <div class="content"> -->
+                    <div class="setting" id='s<%= section.id %>'  style = "display:<%= section.hide %>">
+                        <div class ="right">
+                            <button class="section_setting" onclick='show_setting("<%= section._id %>")'><img class="img_setting" src="/img/edit.png"></button>
+                            <button class="section_setting" onclick='act("delete", "<%= section._id %>" , this)' id="delete<%= section.id %>"><img class="img_setting"  src="/img/delete.png"></button>
+                            <button class="section_setting" onclick='act("hide","<%= section._id %>")' id="hide<%= section.id %>"><img class="img_setting"  src="/img/on.png"></button>
+                            <button class="section_setting" onclick='act("up","<%= section.id %>")'>▲</button>
+                            <button class="section_setting" onclick='act("down","<%= section.id %>")'>▼</button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class='hiden'  style='display:<%= section.demo %>'>
+                        <div class ='right'>
+                            <button  onclick='act("demo","<%= section._id %>")' class='section_setting'id="demo<%= section.id %>" style='background-color:#fff; '><img class='img_setting' style='background-color:#fff; ' src='/img/on.png'></button>
+                        </div>
+                        <h1>HIDDEN</h1>
+                    </div>
+                    
+                    <div    class="for_load "   id='<%= section._id%>'  style = "display:<%= section.hide %> ; background-color:#<%= section.backgorund_color %> ; color:#<%= section.text_color %>; font-family:<%= section.text_font %>">
+                         <button onclick='lol("<%= section.id %>")'>PUT</button>
+                    </div>
                 </div>
-            </div>
+            <!-- </div> -->
+                <%  }) %>
+                    
+                <%}%>
+                <% } %> 
+        </div>
             
-                <!-- </section> -->
                 <button class="add_section" onclick="view_types_of_section()">
                     ADD
                 </button>
@@ -91,11 +195,12 @@
     </div>
  
     
-    <!-- <button id="start" onclick="create_section()">
-        Start
-    </button> -->
+    
 </main>
-</body>
-<script src="/js/template.js"></script>
+<script type="text/javascript" src="/js/block_code.js"></script>
 <script src="/js/index.js"></script>
+
+</body>
+
+
 </html>

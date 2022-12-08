@@ -39,7 +39,7 @@ nav{
 
     margin-left: 2%;
     font-size: 0.95rem;
-    color: #6E0D25;;
+    /* color: #6E0D25;; */
     letter-spacing: 0.0625em;
     display: block;
     padding: 0.5rem 1rem;
@@ -129,10 +129,10 @@ header{
     font-size: 3.25rem;
     font-weight: 700;
     line-height: 1.5rem;
-    color:#6E0D25;
+    /* color:#6E0D25; */
 }
 .text-muted{
-    color:#6E0D25;
+    /* color:#6E0D25; */
 }
 .form-control {
     display: block;
@@ -270,9 +270,11 @@ main{
 
 #user_data{
     border-bottom: solid 1px black;
-    height: 12vh;
     padding-top: 1rem;
-    padding-left: 20%;
+    padding-bottom: 0.5rem;
+}
+#user_blog{
+    width: 100%;
 }
 #centre{
     padding-top:5rem;
@@ -285,6 +287,7 @@ main{
     place-items: center;
     padding-top:5rem;
     padding-left:1rem;
+    width: 100%;
 }
 #proyects{
     display: grid;
@@ -327,7 +330,7 @@ footer{
 
 
 .section{
-    background-color: #aacac5;
+    /* background-color: #aacac5; */
     margin-top: 0rem;
     /* padding-bottom: 3rem; */
     /* display: flex; */
@@ -367,6 +370,7 @@ footer{
 .blog_section{
     margin-bottom: 0;
     border: 1px solid;
+    /* width: 100vh; */
 }
 
 .add_section{
@@ -401,6 +405,11 @@ footer{
     display: flex;
     justify-content: space-between;
 }
+#header_of_left_change{
+    display: flex;
+    justify-content: space-between;
+
+}
 
 .choose_type{
     width: 17rem;
@@ -410,6 +419,21 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.hidden{
+    background-color:#fff;
+    width:100%;
+    place-items: center;
+}
+@media (min-width: 450px){
+    #left, #left1{
+        display: none;
+        width: 50%;
+        min-width: 238px;
+        margin-left: 0;
+        
+    }
+}
+
 @media (min-width: 792px){
     .navbar{
         flex-wrap: nowrap;
@@ -417,7 +441,7 @@ footer{
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
         border: none;
-        background-color: transparent;
+        background-color:  transparent;
         margin-top: 0%;
         margin-right:1%;
         transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
@@ -436,7 +460,7 @@ footer{
         padding-left: 0.5rem;
     }
     .brand{
-        color:#6E0D25; 
+        /* color:#6E0D25;  */
     }
     header{
         margin-top: -1%;
@@ -468,8 +492,15 @@ footer{
     .buttonmenu{
         display:none;
     }
-    #left, #left1{
+    #left{
         display: grid;
+        width: 30%;
+        min-width: 238px;
+        margin-left: 0;
+        
+    }
+    #left1{
+        display: none;
         width: 30%;
         min-width: 238px;
         margin-left: 0;
@@ -485,9 +516,6 @@ footer{
     .choose_type{
         width:30rem;
         height: 10rem;
-    }
-    #user_data{
-        padding-left: 15%;
     }
     main{
         display: flex;
@@ -530,3 +558,54 @@ footer{
 .green{
     color:#aacac5
 }
+
+.background_or_text{
+    color: #6E0D25;
+    text-align: center;
+}
+.change_style{
+    display: none;
+    background-color: #ABAFB7;
+    width: 340px;
+    z-index: 9;
+    margin-left: -2%;
+    margin-top: -2%;
+    position: absolute;
+    
+
+}
+.change_block{
+    justify-content: center;
+    display: grid;
+
+}
+.change_style_caja2{
+    display: flex;
+    margin-bottom: 10px;
+    
+
+}
+.for_input_color{
+   height: 15px;
+}
+.rgb{
+ width: 35px;
+}
+.h16{
+    width:70px;
+}
+.change_style_caja3{
+    display: grid;
+    margin-left: 15px;
+}
+
+.in_change_style{
+    width:80px;
+    margin-right: 5px;
+}
+.button_change{
+    background-color: #ABAFB7;
+}
+
+
+
