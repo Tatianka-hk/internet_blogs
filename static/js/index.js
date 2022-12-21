@@ -57,6 +57,14 @@ function load_blocks(data){
     while(position1 > 0){ 
        sections[i].innerHTML =data.substring(position0, position1);
         i++;
+        // if (sections[i].innerHTML.includes("i8938423740298341730") == true){
+        //     console.log("true - ", i);
+        //     let temp_code = sections[i].innerHTML.substring(0,sections[i].innerHTML.indexOf("i8938423740298341730") ) ;
+        //     temp_code+= "src ='data:image/image/png;base64," +sectioms
+        //     <%=image.img.data.toString('base64')%>">"
+
+
+        // }
     position0 =  position1 +13;
         position1 =data.indexOf("end827rifddfo", position1+1);
 
@@ -98,16 +106,13 @@ function act(act_s, id, ob){
 
 }
 
-function change_text(ob){
-    // hide all other textarreas
-    let textsarreas = document.getElementsByClassName("txtarea")
-    for (i=0;i<textsarreas.length;i++){
-        textsarreas[i].style.display="none"
-    }
-    //find parrent node of text
+
+
+function change_text1(event,ob){
+    console.log("CHANGE_TEXT1")
+    // find text_number
     let parnode = ob.parentNode;
     let texts = parnode.getElementsByClassName("text7y88098hdf");
-    //find text_number
     let text_number = 0
     for (i=0;i<texts.length;i++){
         if (texts[i]== ob){  text_number = i }
@@ -116,32 +121,11 @@ function change_text(ob){
     while (parnode.getAttribute('id') == null){//while DOM element hasn't atribute "ID"
         parnode = parnode.parentNode;
      }
+     
      let section_number= String(parnode.id)
-     // CHANGE TEXT WITHOUT <> 
-    let text = ob.innerHTML;
-    const newItem = document.createElement('t');
-
-    //create textarte
-    if ( ob.className.includes("texto_centro") ==  true  ){
-        console.log("1")
-        newItem.innerHTML=`<div  class = "txtarea"  style='display:grid; position:relative; z-index:9; margin-top:-5%; height:15%' > <textarea contenteditable onclick="selected_text(event,'${section_number}', ${text_number}, this)" id='area' onkeypress='change_text1(event,this, ${text_number},"${section_number}")' class='for_change_content texto_centro' type='text' style=' background-color: aliceblue;height: 150%;'  >${text}</textarea> </div>`
-    }
-    else if( ob.className.includes("text-muted") ==  true   ){
-        console.log("2")
-        newItem.innerHTML=`<div  class = "txtarea"   style='display:grid;place-items: center;    position: relative; z-index: 9;margin-top: -5%;height: 15%;' > <textarea contenteditable onclick="selected_text(event,'${section_number}', ${text_number}, this)" id='area' onkeypress='change_text1(event,this, ${text_number},"${section_number}")' class='for_change_content text-muted' type='text' style=' width: 150%; height: 100%; background-color: aliceblue;'  >${text}</textarea> </div>`
-    }
-    else if( ob.className.includes("brand") ==  true  ){
-        console.log("3")
-        newItem.innerHTML=`<div style='display:grid     position: relative; z-index: 9; margin-top: -5%; height: 15%;' class = "txtarea" > <textarea contenteditable  onkeypress='change_text1(event,this, ${text_number},"${section_number}")' id='area' )class='for_change_content brand' type='text' style=' width: 30%; background-color: aliceblue;'    >${text}</textarea> </div>`
-    }
-    //replace text on textarea
-    parnode.replaceChild(newItem, ob);
-    console.log(ob)
-}
-
-function change_text1(event,ob,text_number,section_number){
+     console.log(text_number, section_number, ob.innerHTML)
     if(event.keyCode === 13){// if user press "Enter"
-        text_from_user = ob.value
+        text_from_user = ob.innerHTML
     let user_id = find_user_id()
     let blog_name = find_blog_name()
     var xhr_demo = new window.XMLHttpRequest()
@@ -168,11 +152,7 @@ function selected_text(event  ,ob){
      let section_number= String(parnode.id)
 
     let text_sele = window.getSelection().getRangeAt(0);// find selected text
-    let start = text_sele.startOffset//find start of selected text
-    let end = text_sele.startOffset +text_sele.toString().length;//find end of selected text
-    // console.log("text_selected" ,text_sele.toString())
-    // console.log(start,end)
-    // console.log("data , " , text_sele.commonAncestorContainer.data )
+    console.log(ob.innerHTML)
 
     //remove all instrumentos
     let herramientos = document.getElementsByClassName("herramientos")
@@ -187,94 +167,234 @@ function selected_text(event  ,ob){
     //create new div with instrumentos
     const  instrumentNode = document.createElement('herramients')
     instrumentNode.style.marginBottom = '3px'
-    instrumentNode.innerHTML+=` <div class='herramientos'  style='display:flex; background-color: aliceblue; margin-bottom:3px'>\
-    <button class='herramineta' onclick = "change_text_style(${start}, ${end}, '<b>','${section_number}', ${text_number}, 0,  '${ob.innerHTML}' ,  '${text_sele.toString()}' ,  '${ text_sele.commonAncestorContainer.data}')"><b>B</b></button>\
-    <button class='herramineta'  onclick = "change_text_style(${start}, ${end}, '<i>','${section_number}', ${text_number}, 0,  '${ob.innerHTML}','${text_sele.toString()}' ,  '${ text_sele.commonAncestorContainer.data}')" ><i>I</i></button>\
-    <button class='herramineta'  onclick = "change_text_style(${start}, ${end}, '<u>','${section_number}', ${text_number}, 0,  '${ob.innerHTML}','${text_sele.toString()}' ,  '${ text_sele.commonAncestorContainer.data}')" ><u>U</u></button>\
-    <button class='herramineta'  onclick = "change_text_style(${start}, ${end}, '<s>','${section_number}', ${text_number}, 0,  '${ob.innerHTML}', '${text_sele.toString()}' ,  '${ text_sele.commonAncestorContainer.data}')" ><s>U</s></button>\
+    instrumentNode.innerHTML+=` <div class='herramientos' id="her" style='display:flex; background-color: aliceblue; margin-bottom:3px'>\
+    <button class='herramineta' onclick = "change_text_style(  '<b>','B','${section_number}', ${text_number}, '</b>')"><b>B</b></button>\
+    <button class='herramineta'  onclick = "change_text_style( '<i>','I', '${section_number}', ${text_number}, '</i>')" ><i>I</i></button>\
+    <button class='herramineta'  onclick = "change_text_style( '<u>','U','${section_number}', ${text_number}, '</u>')" ><u>U</u></button>\
+    <button class='herramineta'  onclick = "change_text_style( '<s>','S', '${section_number}', ${text_number}, '</s>')" ><s>U</s></button>\
     
-<select class='herramineta' name='color'>\
-    <option disabled>color</option>\
-    <option>yellow</option>\
-    <option>green</option>\
-    <option>blue</option>\
-    <option>white</option>\
-    <option>black</option>\
-    <option>gris</option>\
-    <option>pink</option>\
-    <option>red</option>\
-    <option>brow</option>\
-    <option>purple</option>\
+<select class='herramineta' name='color' onchange="make_up_style(this,'${section_number}', ${text_number})">\
+<option value = "choose_color">choose color</option>
+<option value="FFFF00">yellow</option>\
+<option value="00FF00">green</option>\
+<option value="0000FF">blue</option>\
+<option value="ffffff">white</option>\
+<option value="000000">black</option>\
+<option value="828282">gris</option>\
+<option value="ffc0cb">pink</option>\
+<option value="FF0000">red</option>\
+<option value="964B00">brown</option>\
+<option value="BF40BF">purple</option>\
 </select>\
-<select class='herramineta' name='background-color'>\
-    <option disabled>background color</option>\
-    <option>yellow</option>\
-    <option>green</option>\
-    <option>blue</option>\
-    <option>white</option>\
-    <option>black</option>\
-    <option>gris</option>\
-    <option>pink</option>\
-    <option>red</option>\
-    <option>brow</option>\
-    <option>purple</option>\
+<select class='herramineta' name='background-color'  onchange="make_up_style1(this,'${section_number}', ${text_number})">\
+<option value = "choose_color">choose color</option>
+                                        <option value="FFFF00">yellow</option>\
+                                        <option value="00FF00">green</option>\
+                                        <option value="0000FF">blue</option>\
+                                        <option value="ffffff">white</option>\
+                                        <option value="000000">black</option>\
+                                        <option value="828282">gris</option>\
+                                        <option value="ffc0cb">pink</option>\
+                                        <option value="FF0000">red</option>\
+                                        <option value="964B00">brown</option>\
+                                        <option value="BF40BF">purple</option>\
 </select>\
 </div>`
 //insert new div with instrumentos before textarea in which is selected text
 ob.parentNode.insertBefore(instrumentNode, ob)
 // color buttons
-color_button(ob.innerHTML ,  text_sele.toString() ,   text_sele.commonAncestorContainer.data, start)
+//color_button(ob.innerHTML ,  text_sele.toString() ,   text_sele.commonAncestorContainer.data, start)
 }
 
 }
 
-function change_text_style(start, end, style, section_number, text_number, button_number,all_text, selected_text, parted_text){
-    let add = "add";
-    let buttons = document.getElementsByClassName("herramineta");
-    console.log("aqui")
-    let ind = all_text.indexOf(parted_text)
-    let index_started = all_text.indexOf("<", ind+start-1)
-    let index_ended = all_text.indexOf("</",ind+start-1)
-    let next_index_ended = all_text.indexOf("</", index_ended+1)
-    console.log(index_started,index_ended)
-    console.log(index_ended,next_index_ended)
-    let add_end_text= style.substring(0,1)+'/'+style.substring(1);
-    let all_text_for_checkong = style+selected_text+add_end_text;
-    let result1 = ""
-    let end_position = ind + 4+selected_text.length;
-    if (index_ended <= index_started){
-        if ( all_text.substring(index_ended,next_index_ended).includes("</b>") == true ){
-            
-        buttons[button_number].style.background = "skyblue"
-         add = "delete";
-         result1 =  all_text.substring(0,ind-3) + selected_text + all_text.substring(end_position)
-        console.log("delete_style")
-        console.log(result1)
+function make_up_style(ob, section_number, text_number){
+    let style_name='SPAN';
+    let style=`<span style='color:#${ob.value}'>`
+    console.log(style)
+    style_end='</span>'
+    change_text_style( style, style_name,  section_number, text_number,style_end)
+
+}
+function make_up_style1(ob, section_number, text_number){
+    let style_name='SPAN';
+    let style=`<span style='background-color:#${ob.value}'>`
+    console.log(style)
+    style_end='</span>'
+    change_text_style( style, style_name,  section_number, text_number,style_end)
+
+}
+
+function change_text_style( style, style_name,  section_number, text_number,style_end){
+    document.getElementById("her").style.display='none;'
+    console.log("true");
+    if (styled(style, style_name,  section_number, text_number)==true){
+        add( style, style_name,  section_number, text_number, style_end);
     }
-}
-    if (add == "add") {
-        buttons[button_number].style.background = "aliceblue"
-        let add = "add";
-        console.log("add_style")
-       
-        let ind = all_text.indexOf(parted_text)
-        
-         result1 = all_text.substring(0,ind) +parted_text.substring(0,start)+style+selected_text+add_end_text+parted_text.substring(end)
-        if (ind+parted_text.length < all_text.length ){
-            result1+=all_text.substring(ind+parted_text.length)
+    else{
+        let text_sele = window.getSelection().getRangeAt(0);// find selected text  0 221
+        if (text_sele.toString() ==  text_sele.commonAncestorContainer.nodeValue){
+            full(  style, style_name,  section_number, text_number, style_end)
         }
-        console.log(result1)
+        else{
+            let start = text_sele.startOffset//find start of selected text
+            // let style_end='</'+style.substring(1);
+            let end = text_sele.startOffset +text_sele.toString().length;//find end of selected text
+            text_sele.commonAncestorContainer.nodeValue  = text_sele.commonAncestorContainer.nodeValue.substring(0, start)+style_end + text_sele.commonAncestorContainer.nodeValue.substring(start,end) +style+ text_sele.commonAncestorContainer.nodeValue.substring(end)                  
+console.log(text_sele.commonAncestorContainer)
+let par = text_sele.commonAncestorContainer.parentNode
+    while (par.nodeName != "DIV"){
+        console.log()
+        if (par.nodeName == style_name){
+            flag = false;
+        }
+        par = par.parentNode;
+    }
+
+    console.log(par.innerHTML)
+    let text = par.innerHTML;
+     while (text.includes('&lt;') == true){
+        let index1 =  text.indexOf('&lt;')
+        text = text.substring(0, index1)+'<'+text.substring(index1+4);
+        console.log(text.innerHTML)
+     }
+     while (text.includes('&gt;') == true){
+        let index =  text.indexOf('&gt;')
+        console.log(text.substring(0, index)+'>')
+        text = text.substring(0, index)+'>'+text.substring(index+4)
+        console.log(text)
+     }
+     while (text.includes('"') == true){
+        let index =  text.indexOf('"')
+        console.log(text.substring(0, index)+'>')
+        text = text.substring(0, index)+"'"+text.substring(index+1)
+        console.log(text)
+     }
+
+let user_id = find_user_id()
+let blog_name = find_blog_name()
+var xhr_demo = new window.XMLHttpRequest()
+xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
+xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+xhr_demo.send(JSON.stringify({act:"change_text", s_text:text, text_number:text_number, s_id:section_number   }))
+window.location.reload()
+            }
+
+
+    }
+
+   
+}
+
+
+function full( style, style_name,  section_number, text_number,style_end){
+    console.log("full")
+    let text_sele = window.getSelection().getRangeAt(0);// find selected text  0 221
+    let flag = true;
+    console.log(text_sele)
+    let par = text_sele.commonAncestorContainer.parentNode
+    while (par.nodeName != "DIV"){
+        console.log(par.nodeName)
+        if (par.nodeName == style_name){
+            flag = false;
+            let pp =  par.parentNode;
+            
+            console.log(par.childNodes)
+            pp.insertBefore(par.childNodes[0], par);
+            pp.removeChild(par)
+            par = pp;
+        }
+        else{
+            par=par.parentNode;
+        }
+       
+        
+    }
+    console.log("parNode - ", par);
+    let all_text = par.innerHTML
+
+console.log("finally - ", all_text)
+//save in bs
+let user_id = find_user_id()
+let blog_name = find_blog_name()
+var xhr_demo = new window.XMLHttpRequest()
+xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
+xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+xhr_demo.send(JSON.stringify({act:"change_text", s_text:all_text, text_number:text_number, s_id:section_number   }))
+window.location.reload()
+}
+function styled(  style, style_name,  section_number, text_number){
+    console.log(style_name)
+    let text_sele = window.getSelection().getRangeAt(0);// find selected text  0 221
+    let flag = true;
+    console.log(text_sele)
+    let par = text_sele.commonAncestorContainer.parentNode
+    while (par.nodeName != "DIV"){
+        console.log()
+        if (par.nodeName == style_name){
+            flag = false;
+        }
+        par = par.parentNode;
+    }
+    console.log("flag - ", flag);
+    return flag;
+
+}
+    
+
+function add( style, style_name,  section_number, text_number,style_end){
+    console.log("add")
+    //finds values
+    let text_sele = window.getSelection().getRangeAt(0);// find selected text  0 221
+    let start = text_sele.startOffset//find start of selected text
+let end = text_sele.startOffset +text_sele.toString().length;//find end of selected text
+// let style_end='</'+style.substring(1);
+//change_text
+text_sele.commonAncestorContainer.nodeValue  = text_sele.commonAncestorContainer.nodeValue.substring(0, start)+ style + text_sele.commonAncestorContainer.nodeValue.substring(start,end) +style_end+ text_sele.commonAncestorContainer.nodeValue.substring(end)
+console.log(text_sele.commonAncestorContainer.nodeValue)
+let par = text_sele.commonAncestorContainer.parentNode
+    while (par.nodeName != "DIV"){
+        console.log()
+        if (par.nodeName == style_name){
+            flag = false;
+        }
+        par = par.parentNode;
+    }
+
+    console.log(par.innerHTML)
+    let text = par.innerHTML;
+     while (text.includes('&lt;') == true){
+        let index1 =  text.indexOf('&lt;')
+        text = text.substring(0, index1)+'<'+text.substring(index1+4);
+        console.log(text.innerHTML)
+     }
+     while (text.includes('&gt;') == true){
+        let index =  text.indexOf('&gt;')
+        console.log(text.substring(0, index)+'>')
+        text = text.substring(0, index)+'>'+text.substring(index+4)
+        console.log(text)
+     }
+     while (text.includes('"') == true){
+        let index =  text.indexOf('"')
+        console.log(text.substring(0, index)+'>')
+        text = text.substring(0, index)+"'"+text.substring(index+1)
+        console.log(text)
+     }
+    // console.log(text)
+//save in bs
+let user_id = find_user_id()
+let blog_name = find_blog_name()
+var xhr_demo = new window.XMLHttpRequest()
+xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
+xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+xhr_demo.send(JSON.stringify({act:"change_text", s_text:text, text_number:text_number, s_id:section_number   }))
+// window.location.reload()
+   
+
     }
 
 
-    let user_id = find_user_id()
-    let blog_name = find_blog_name()
-    var xhr_demo = new window.XMLHttpRequest()
-    xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
-    xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-    xhr_demo.send(JSON.stringify({act:"change_text", s_text:result1, text_number:text_number, s_id:section_number   }))
-    window.location.reload()
-}
+
 
 function color_button(all_text,selected_text,parted_text,start){
     let buttons = document.getElementsByClassName("herramineta");
@@ -471,6 +591,64 @@ function choose_font(s_id){
        window.location.reload()
   
 }
+//create new post
+function create_new_post(){
+    let user_id = find_user_id()
+        let blog_name = find_blog_name()
+        var xhr_demo = new window.XMLHttpRequest()
+        xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
+        xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+        xhr_demo.send(JSON.stringify({act:"create_new_post"}))
+       window.location.reload()
+}
+
+//upload image
+function upload_file(s_id){
+    let hexs = document.getElementsByClassName("image")
+    s_color = 0;
+    console.log(hexs)
+    for (i=0; i<hexs.length;i++){
+        if(hexs[i].id == s_id ){ // if user input value in input area
+            console.log(hexs[i].value)
+            if (hexs[i].value != "" == true){ // if value is hex code
+                s_color = hexs[i].value // user input color hex code here
+            }
+            else{
+                div_errors = document.getElementsByClassName("no_chose_image");
+                for(i=0;i<div_errors.length;i++){
+                    if (div_errors[i].id==s_id){
+                        flag = true;
+                        div_errors[i].innerHTML = "no correct value" //output error
+                    }
+                }
+            }
+        }
+    }
+    console.log(s_color)
+     //change in bd
+     let user_id = find_user_id()
+     let blog_name = find_blog_name()
+     var xhr_demo = new window.XMLHttpRequest()
+     xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}/upload`, true)
+     xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+     xhr_demo.send(JSON.stringify({act:"upload_file", s_color:s_color, s_id:s_id   }))
+    window.location.reload()
+}
+
+
+
+// function change_post_name(ob){
+//     if(event.keyCode === 13){// if user press "Enter"
+//         text_from_user = ob.innerHTML
+//     let user_id = find_user_id()
+//     let blog_name = find_blog_name()
+//     var xhr_demo = new window.XMLHttpRequest()
+//     xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}/post`, true)
+//     xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+//     xhr_demo.send(JSON.stringify({act:"change_text", s_text:text_from_user}))
+//     window.location.reload()
+
+// }
 
 
 
@@ -478,10 +656,4 @@ function choose_font(s_id){
 
 
 
-
-
-
-
-
-
-
+// 

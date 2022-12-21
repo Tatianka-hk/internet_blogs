@@ -15,7 +15,10 @@ const userSchema =  new Schema({
         block_name:{
             type:String,
         },
-        
+        publich:{
+            type:Boolean,
+            default:false
+        }
     }]
 })
 

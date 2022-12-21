@@ -1,30 +1,72 @@
-<select class='herramineta' name='Size'>\
-    <option disabled>Size</option>\
-    <option>1</option>\
-    <option>2</option>\
-    <option>4</option>\
-    <option>6</option>\
-    <option>8</option>\
-    <option>10</option>\
-    <option>12</option>\
-    <option>16</option>\
-    <option>18</option>\
-    <option>20</option>\
-    <option>22</option>\
-    <option>24</option>\
-    <option>26</option>\
-    <option>28</option>\
-    <option>30</option>\
-</select>\
-<select class='herramineta' name='Font'>\
-    <option disabled>Font</option>\
-    <option>Arial</option>\
-    <option>Verdana</option>\
-    <option>Tahoma</option>\
-    <option>Trebuchet MS</option>\
-    <option>Times New Roman</option>\
-    <option>Georgia</option>\
-    <option>Garamond</option>\
-    <option>Courier New</option>\
-    <option>Brush Script MT</option>\
-</select>\
+<% if ( section.name_of_section == 'A4' || section.name_of_section == 'A3' || section.name_of_section == 'A5'|| section.name_of_section == 'A6'||section.name_of_section == 'A7'||section.name_of_section == 'A8'||section.name_of_section == 'A9'|| section.name_of_section == 'A10'|| section.name_of_section == 'N4' || section.name_of_section == 'N5' || section.name_of_section == 'N9' || section.name_of_section == 'N11' || section.name_of_section == 'N12' || section.name_of_section == 'N13') {%> 
+    <hr style=" height: 2px; width: 100%; background-color: #000000;">
+                        <div class="change_block">
+                            
+    <form action="/user/<%= section.id_user %>/blog/<%= section.name_of_blog %> /upload/<%= section._id %> " method="POST" enctype="multipart/form-data">
+     <div>
+         <label for="image">Upload Image</label>
+         <input type="file" id="image"
+                name="image" value="" required>
+     </div>
+     <div>
+         <button type="submit">Submit</button>
+     </div>
+     </form>
+     </div>
+
+ <% } %> 
+ <% if ( section.name_of_section == 'A7' || section.name_of_section == 'A8' || section.name_of_section == 'A10') {%> 
+    <hr style=" height: 2px; width: 100%; background-color: #000000;">
+                        <div class="change_block">
+     <form action="/user/<%= section.id_user %>/blog/<%= section.name_of_blog %> /upload2/<%= section._id %> " method="POST" enctype="multipart/form-data">
+      <div>
+          <label for="image">Upload Image</label>
+          <input type="file" id="image"
+                 name="image" value="" required>
+      </div>
+      <div>
+          <button type="submit">Submit</button>
+      </div>
+      </form>
+      </div>
+
+  <% } %>
+ <% if ( section.name_of_section == 'A7' || section.name_of_section == 'A8' || section.name_of_section == 'A10') {%> 
+    <hr style=" height: 2px; width: 100%; background-color: #000000;">
+    <div class="change_block">
+     <form action="/user/<%= section.id_user %>/blog/<%= section.name_of_blog %> /upload3/<%= section._id %> " method="POST" enctype="multipart/form-data">
+      <div>
+          <label for="image">Upload Image</label>
+          <input type="file" id="image"
+                 name="image" value="" required>
+      </div>
+      <div>
+          <button type="submit">Submit</button>
+      </div>
+      </form>
+      </div>
+
+  <% } %> 
+  
+  <% if (  section.name_of_section == 'A10') {%> 
+    <hr style=" height: 2px; width: 100%; background-color: #000000;">
+    <div class="change_block">
+     <form action="/user/<%= section.id_user %>/blog/<%= section.name_of_blog %> /upload4/<%= section._id %> " method="POST" enctype="multipart/form-data">
+      <div>
+          <label for="image">Upload Image</label>
+          <input type="file" id="image"
+                 name="image" value="" required>
+      </div>
+      <div>
+          <button type="submit">Submit</button>
+      </div>
+      </form>
+      </div>
+
+  <% } %> 
+                         <!-- <input type="file" id='<%= section._id %>'  class="image"
+                       name="image" value="" required>
+                       <div id='<%= section._id %>' class="errors no_chose_image" ></div>
+                       <button  class="button_change" onclick="upload_file('<%= section._id %>')">Change image</button> -->
+                     
+                    <!-- <div class="content"> -->

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs')  %> 
+<body id="page-top" class="loginBody">
+    <nav>
+        <a class="brand" href="/">
+            FABULA
+        </a>
+    </nav>
+    <section class="page-section" id="create_blog">
+            <form id = "registerForm" method="post">
+                <div class="mb-1">
+                        <input class="form-control" name="name" type="text" placeholder="Post Name *"  />
+                        <div class="errors" >
+                        <% if(typeof alert != 'undefined') { %>
+                            <h3> <%= alert %></h3>
+                 <% } %> 
+                        </div>
+                <button class="send" id="submitLogin" type="submit">Create</button>
+                </div>
+            </form>
+    </section>
+    <footer class="loginFooter">
+        Copyright &copy; Your Website 2022
+    </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style1.css" />
+    <title><%= blog_name %> </title>
+</head>
+<body   id="page-top" class='loginBody' onload='load_blocks("<%= data %>")'>
+    <% if( sections != null){ %> 
+        <% if (sections.length ) { %>
+            <% sections.forEach(( section ) => { %>
+        
+    
+    <div    class="for_load "   id='<%= section._id%>'  style = "display:<%= section.hide %> ; background-color:#<%= section.backgorund_color %> ; color:#<%= section.text_color %>; font-family:<%= section.text_font %>">
+        <button>PUT</button>
+   </div>
+   <%  }) %>
+                    
+   <%}%>
+   <% } %> 
+</body>
+<script src="/js/view.js"></script>
+</html>

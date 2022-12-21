@@ -1,27 +1,31 @@
 const express =require('express')
 const mongoose=require('mongoose');
-const path = require('path');
 const authRoutes  = require('./routers/auth')
 const inicioRoutes  = require('./routers/inicio')
 const userRoutes  = require('./routers/user')
 const blogRoutes = require('./routers/blog')
+const postRoutes = require('./routers/post')
 
 
 
 const app =  express();
 const PORT = 5000;
-const createPath = (page) => path.resolve(__dirname, 'views', `${page}.ejs`);
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/static'));
 app.use(express.urlencoded({ extended: true } ))
 app.use(express.json())
+const bodyParser = require("body-parser")
+app.use(bodyParser.urlencoded(
+  { extended:true }
+))
 
 
 app.use('/auth', authRoutes);
 app.use('/', inicioRoutes)
 app.use('/',userRoutes)
 app.use('/',blogRoutes)
+app.use('/',postRoutes)
 
 
 

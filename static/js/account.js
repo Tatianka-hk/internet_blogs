@@ -51,7 +51,7 @@ function put_name(){
    xhr_demo.send(JSON.stringify({ edit_name_input: puted_name    }))
     window.location.reload()
 }
-
+// function for changing user email
 function put_email(){
     id =  find_user_id()
    console.log(id)
@@ -74,4 +74,63 @@ function find_user_id(){
     // console.log(user_id)
     return user_id
 
+}
+
+// view project setting
+function view_setting(obj){
+    let par = obj.parentNode;
+    par= par.parentNode; 
+    par= par.parentNode; 
+    console.log(par.childNodes);
+    let out_set;
+    for (i=0;i< par.childNodes.length;i++){
+        console.log(par.childNodes[i].className)
+        if (par.childNodes[i].className == "ts" ){
+            out_set = par.childNodes[i]
+        }
+    }
+    out_set.style.display="flex";
+
+
+}
+// view project setting
+function cerrar_setting(obj){
+    obj.parentNode.style.display="none";
+}
+
+//change project name
+function change_project_name(obj){
+    let text="input_for_change_project_name_"+obj
+    console.log(text)
+    console.log(document.getElementById(text))
+    //change in bd
+    id =  find_user_id()
+    var xhr_demo = new window.XMLHttpRequest()
+    xhr_demo.open('PUT',`/user/${id}/change_project_name/${obj}`, true)
+    xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+    xhr_demo.send(JSON.stringify({ inputed_name: document.getElementById(text).value    }))
+     window.location.reload()
+    
+}
+
+// deleteproject
+function delete_project(obj){
+      //change in bd
+      id =  find_user_id()
+      var xhr_demo = new window.XMLHttpRequest()
+      xhr_demo.open('DELETE',`/user/${id}/delete_porject/${obj}`, true)
+      xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+      xhr_demo.send()
+       window.location.reload()
+}
+
+// publich
+function publish(obj){
+     //change in bd
+     id =  find_user_id()
+     var xhr_demo = new window.XMLHttpRequest()
+     xhr_demo.open('POST',`/user/${id}/publish_project/${obj}`, true)
+     xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+     xhr_demo.send()
+      window.location.reload()
 }

@@ -9,11 +9,11 @@ const sectionSchema =  new Schema({
     name_of_blog:{
         type:String
     },
+    blog_id:{
+        type:String
+    },
     id:{
         type:Number
-    },
-    backgroundcolor:{
-        type:String
     },
     name_of_section:{
         type:String
@@ -44,6 +44,23 @@ const sectionSchema =  new Schema({
     text_font:{
         type:String,
         default:"Arial"
+    },
+    post:{
+        type:Boolean,
+        default:false
+    },
+    posts:[ {
+        post_name: {
+            type:String
+        }}
+    ]
+    ,data:{
+        type:Date
+    }
+    , img:
+    {
+        data: Buffer,
+        contentType: String
     }
 })
 const Section = mongoose.model('Section',sectionSchema);

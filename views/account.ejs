@@ -41,9 +41,30 @@
             <div id="proyects">
                 <% if (user.blogs.length) { %>
                     <% user.blogs.forEach(( blog ) => { %>
-                        <div class = "proyect" style="color:black">
-                           <a href="/user/<%= user._id %>/blog/<%= blog["block_name"] %>"</a><%= blog["block_name"] %></a> 
+                        <div class="cell">
+                            <div class="pr">
+                           <div class = "proyect" style="color:black">
+                               <a  class="project_name" href="/user/<%= user._id %>/blog/<%= blog["block_name"] %>"><%= blog["block_name"] %></a> 
+                            </div>
+                            <div class="setting_buttons">
+                            <button class = "project_button" onclick ="view_setting(this)">Setting</button>
+                            <% if (blog.publich == false) {%>
+                                 <button class = "project_button" onclick ="publish('<%= blog.block_name  %>')">Publish</button>
+                            <% }  %> 
+                            <% if (blog.publich == true) {  %>
+                                 <button class = "project_button" ><a class="project_name" href="/fabula/<%= blog._id  %>">View</a></button> 
+                            <% }  %> 
+                            <button class = "project_button" onclick ="delete_project('<%= blog.block_name  %>')">Delete</button>
                         </div>
+                        </div>
+                        <div class="ts">
+                          
+                          <input id="input_for_change_project_name_<%= blog["_id"]  %>"  name = "edit_name_input" type="text" placeholder="Your Name *" />
+                            
+                        <button onclick = "change_project_name('<%= blog._id  %>')" class="project_button" type="submit">edit</button>
+                        <button class="cerrar1" onclick="cerrar_setting(this)">X</button>
+                        </div>
+                    </div>
 
                     <% }) %>
                     <% } %>  
@@ -68,7 +89,7 @@
   }
 });
 str = String('<%= access_token %>')
-if (str/lengt< 10 ) {
+if (str.lengt< 10 ) {
     localStorage.setItem('access_token', '<%= access_token %>'); 
 }
 

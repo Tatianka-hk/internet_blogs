@@ -120,6 +120,14 @@
     width: 10rem;
     height: 10rem;
 }
+.post{
+    padding-top:5rem;
+    padding-bottom: 5rem;
+    border-bottom: 3px solid darkgrey;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+}
 @media (min-width: 760px){
     .sA8{
         display: flex;
@@ -318,4 +326,35 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.classic_divider{
+    color: black;
+    height: 1px;
+}
+.vl {
+    border-left: 6px solid black;
+    height: 100px;
+  }
+
+.text_quote{
+    font-style:italic;
+    margin-left: 45px;
+}
+.Q1, .Q2{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.quote_image{
+    height: 100px;
+    margin-left: 5px;
+
+}
+.btable{
+    width: 100%;
+    height: 200px;
+}
+.tdd{
+    border: 0.3px solid black;
 }

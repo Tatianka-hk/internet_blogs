@@ -45,6 +45,10 @@ nav{
     padding: 0.5rem 1rem;
     text-decoration: none;
 }
+.a{
+    text-decoration: none;
+    color:#6E0D25;
+}
 .imgmenu{
     background-color: #aacac5;
     height: 0.95rem;
@@ -297,7 +301,12 @@ main{
     width: 30vh;
     height: 20vh;
     margin-right: 2rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+    color: black;
+    background-color: #aacac5;
+    display: grid;
+    text-align: center;
+    align-content: center;
 }
 
 
@@ -401,6 +410,16 @@ footer{
     border: none;
     background-color:  #ABAFB7;;
 }
+.cerrar1{
+    color: #6E0D25;
+    display: flex;
+    justify-content: flex-end;
+    height: 20px;
+    width: 150px;
+    background-color: whitesmoke;
+    border: none;
+    padding: 0;
+}
 #header_of_left{
     display: flex;
     justify-content: space-between;
@@ -410,7 +429,27 @@ footer{
     justify-content: space-between;
 
 }
+.project_button{
+    width: 10vh;
+    background-color: #aacac5;
+    border-color: #6E0D25;
+    color: #6E0D25;
+}
 
+.project_name{
+    text-decoration: none;
+    color: #6E0D25;
+    font-size: 2.9rem;
+}
+
+.setting_buttons{
+    display:flex;
+    width:30vh;
+}
+
+.cell{
+    display:grid;
+}
 .choose_type{
     width: 17rem;
     height: 12rem;
@@ -435,6 +474,13 @@ footer{
 }
 
 @media (min-width: 792px){
+    .project_button{
+        width:16vh;
+    }
+    .setting_buttons{
+        display:flex;
+        width:48vh;
+    }
     .navbar{
         flex-wrap: nowrap;
         justify-content: flex-start;
@@ -574,6 +620,19 @@ footer{
     
 
 }
+.negarna_nadbudova{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.post{
+    padding-top:5rem;
+    padding-bottom: 5rem;
+    border-bottom: 3px solid darkgrey;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+}
 .change_block{
     justify-content: center;
     display: grid;
@@ -605,7 +664,34 @@ footer{
 }
 .button_change{
     background-color: #ABAFB7;
+    
+}
+#types_post_block{
+    background-color: whitesmoke;
+    display: none;
+    width: 160px;
+    margin-top: -5%;
 }
 
+.ts{
+    background-color: whitesmoke;
+    
+    display:flex;
+    width: 160px;
+    margin-top: -5%;
+    display: none;
+}
+.post_type{
+
+    display:flex;
+    background-color: revert;
+    justify-content: space-around;
+    height: 50px;
+    width: 150px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
 
 
