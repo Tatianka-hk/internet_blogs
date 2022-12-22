@@ -10,10 +10,10 @@
             <div class="nav-item"><a class="nav-link" href="#contact">Contact</a></div>
             
             <div class="nav-item"><a class="nav-link" href="/auth/register">Register</a></div>
-            <div class="nav-item"><a class="nav-link" href="/auth/login">Login</a></div>
+            <div class="nav-item"><a class="nav-link" onclick="sent_token_to_login()">Login</a></div>
             
         </div>
-            
+        <!-- href="/auth/login" -->
     </nav>
     <header>
             <div class="titulo">FABULA</div>
@@ -39,13 +39,13 @@
                 <div class="mb-5">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" name="name" type="text" placeholder="Your Name *" >
+                            <input class="form-control" name="name" type="text" placeholder="Your Login *" >
                         </div>
                         <div class="form-group">
-                            <input class="form-control" name="email" type="email" placeholder="Your email *" >
+                            <input class="form-control" name="email" type="email" placeholder="Your Email *" >
                         </div>
                         <div class="form-group">
-                            <input class="form-control" name="phone" type="phone" placeholder="Your phone *" >
+                            <input class="form-control" name="phone" type="phone" placeholder="Your Phone *" >
                         </div>                         
                     </div>
                     <div class="col-md-6">
@@ -68,7 +68,9 @@
     </section>
     <footer class="index">
         Copyright &copy; Your Website 2022
-    </footer>
-  
+    </footer> 
+    <script src = "/js/inicio.js">
+
+    </script>
 </body>
 </html>

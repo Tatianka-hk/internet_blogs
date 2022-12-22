@@ -1,21 +1,37 @@
 const express = require('express');
-const {generateAccessToken} = require('../middleware/for_auth')
+
 const User = require('../models/user')
 const{changed_name_checker,email_checker  } =  require('../middleware/check')
 const { validationResult } = require('express-validator');
 const Section =  require('../models/section')
 const Post = require('../models/post')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 // mostrar pagina personal de usario
 //get /user 
-exports.user_get=(req,res)=>{
-    User
-        .findOne({_id:req.params.id})
-        .then((result)=>{ 
-            console.log(req.params)
-            access_token = generateAccessToken(result)
-            res.render("account.ejs",{title:"Personal account", user:result, access_token:access_token})
-        })
-            .catch((error)=> {console.log(error)})
+exports.user_get=( req,res )=>{
+    console.log("USER GET")
+    console.log(req.headers.authorization )
+    try{
+        if (typeof req.headers.authorization != 'undefined'){
+            jwt.verify(token,  process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+                if (err){console.log(err)}
+                User
+                .findOne({_id:req.params.id})
+                .then((result)=>{ 
+                    console.log("get")
+                    res.render("account",{title:"Personal account", user:result})
+                })
+                    .catch((error)=> {console.log(error)})
+                      })
+            
+       
+    }
+    }catch(err){
+        console.log(err)
+    }
+    
+    
 }
 // cambiar nomdre de usario 
 //put./user/:id/name

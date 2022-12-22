@@ -52,7 +52,7 @@
                                  <button class = "project_button" onclick ="publish('<%= blog.block_name  %>')">Publish</button>
                             <% }  %> 
                             <% if (blog.publich == true) {  %>
-                                 <button class = "project_button" ><a class="project_name" href="/fabula/<%= blog._id  %>">View</a></button> 
+                                 <button class = "project_button" ><a class="project_name a" href="/fabula/<%= blog._id  %>">View</a></button> 
                             <% }  %> 
                             <button class = "project_button" onclick ="delete_project('<%= blog.block_name  %>')">Delete</button>
                         </div>
@@ -78,7 +78,7 @@
         Copyright &copy; Your Website 2022
     </footer>
     <script>
-        document.addEventListener('click', (e) => {
+        document.addEventListener( 'click', (e) => {
   const id = e.target?.dataset?.id || null;
   if (id) {
     fetch(`/user/${id}`, {
@@ -88,10 +88,7 @@
     });
   }
 });
-str = String('<%= access_token %>')
-if (str.lengt< 10 ) {
-    localStorage.setItem('access_token', '<%= access_token %>'); 
-}
+// token = localStorage.getItem('token')
 
 
     </script>
