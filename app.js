@@ -34,7 +34,7 @@ mongoose
        .then((res)=>console.log('Connection to DB') )
        .catch((error)=>console.log(error))//"no connection to DB"
 
-app.listen(PORT, 'localhost', (error) => {
+app.listen(PORT, (error) => {
   error ? console.log(error) : console.log(`listening port ${PORT}`);
 })
 
