@@ -36,3 +36,5 @@ mongoose
 app.listen(PORT, 'localhost', (error) => {
   error ? console.log(error) : console.log(`listening port ${PORT}`);
 })
+
+module.exports = app;
