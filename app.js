@@ -5,9 +5,10 @@ const inicioRoutes  = require('./routers/inicio');
 const userRoutes  = require('./routers/user');
 const blogRoutes = require('./routers/blog');
 const postRoutes = require('./routers/post');
+require('dotenv').config();
 
 const app =  express();
-const PORT = 3000;
+const PORT = procces.env.POST || 3000;
 
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/static'));
@@ -37,4 +38,4 @@ app.listen(PORT, 'localhost', (error) => {
   error ? console.log(error) : console.log(`listening port ${PORT}`);
 })
 
-module.exports = app;
+//add
