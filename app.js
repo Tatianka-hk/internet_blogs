@@ -8,7 +8,7 @@ const postRoutes = require('./routers/post');
 require('dotenv').config();
 
 const app =  express();
-const PORT = process.env.POST || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/static'));
