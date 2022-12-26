@@ -3,7 +3,7 @@
     <%- include('./partials/head.ejs')  %> 
 <body  id="page-top" class='loginBody' onload='load_blocks("<%= data %>")' >
     <nav>
-        <a class="brand" href="/user/<%= user_id %>">
+        <a class="brand" href="/user/<%= user_id %>/blog/<%= blog_name %>">
             FABULA
         </a>
     </nav>
@@ -144,8 +144,8 @@
                                 <button class="section_setting" onclick='show_setting("<%= section._id %>")'><img class="img_setting" src="/img/edit.png"></button>
                                 <button class="section_setting" onclick='act("delete", "<%= section._id %>" , this)' id="delete<%= section.id %>"><img class="img_setting"  src="/img/delete.png"></button>
                                 <button class="section_setting" onclick='act("hide","<%= section._id %>")' id="hide<%= section.id %>"><img class="img_setting"  src="/img/on.png"></button>
-                                <button class="section_setting" onclick='act("up","<%= section.order %>")'>▲</button>
-                                <button class="section_setting" onclick='act("down","<%= section.order %>")'>▼</button>
+                                <button class="section_setting" onclick='act("up","<%= section.id %>")'>▲</button>
+                                <button class="section_setting" onclick='act("down","<%= section.id %>")'>▼</button>
                                 
                             </div>
                         </div>

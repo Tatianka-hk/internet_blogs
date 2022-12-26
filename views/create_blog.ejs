@@ -3,17 +3,21 @@
     <%- include('./partials/head.ejs')  %> 
 <body id="page-top" class="loginBody">
     <nav>
-        <a class="brand" href="/">
+        <a class="brand" href="/user/<%= user_id %>">
             FABULA
         </a>
     </nav>
     <section class="page-section" id="create_blog">
             <form id = "registerForm" method="post">
                 <div class="mb-1">
-                        <input class="form-control" name="name" type="text" placeholder="Blog Name *"  />
+                        <input class="form-control" name="name" type="text" placeholder="Blog Name *"  required/>
+                        <input class="form-control" name="domen" type="text" placeholder="Domen *"  required/>
                         <div class="errors" >
-                        <% if(typeof alert != 'undefined') { %>
-                            <h3> <%= alert[0].msg %></h3>
+                        <% if(typeof alerts != 'undefined') { %>
+                            <% alerts.forEach(function(error) { %>
+                                 <%= error %>
+                                 <br>
+                         <% }) %>
                  <% } %> 
                         </div>
                 <button class="send" id="submitLogin" type="submit">Create</button>

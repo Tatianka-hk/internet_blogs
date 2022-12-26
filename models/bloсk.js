@@ -1,8 +1,7 @@
-
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const sectionSchema =  new Schema({ 
+const blockSchema =  new Schema({ 
     id_user:{
         type:String
     },
@@ -10,6 +9,9 @@ const sectionSchema =  new Schema({
         type:String
     },
     blog_id:{
+        type:String
+    },
+    post_name:{
         type:String
     },
     id:{
@@ -54,14 +56,32 @@ const sectionSchema =  new Schema({
             type:String
         }}
     ]
-    ,data:{
-        type:Date
-    }
     , img:
     {
         data: Buffer,
         contentType: String
+    },
+    img2:
+    {
+        data: Buffer,
+        contentType: String
+    }
+    ,
+    img3:
+    {
+        data: Buffer,
+        contentType: String
+    }
+    ,
+    img4:
+    {
+        data: Buffer,
+        contentType: String
+    }
+    ,
+    url:{
+        type:String
     }
 })
-const Section = mongoose.model('Section',sectionSchema);
-module.exports = Section;
+const Block = mongoose.model('Block',blockSchema);
+module.exports = Block;

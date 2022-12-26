@@ -52,16 +52,20 @@
                                  <button class = "project_button" onclick ="publish('<%= blog.block_name  %>')">Publish</button>
                             <% }  %> 
                             <% if (blog.publich == true) {  %>
-                                 <button class = "project_button" ><a class="project_name a" href="/fabula/<%= blog._id  %>">View</a></button> 
+                                 <button class = "project_button" ><a class="project_name a" href="/fabula/<%= blog["domen"]  %>">View</a></button> 
                             <% }  %> 
                             <button class = "project_button" onclick ="delete_project('<%= blog.block_name  %>')">Delete</button>
                         </div>
                         </div>
                         <div class="ts">
+                            <form method="post" action="/user/<%= user._id %>/change_project_name/<%= blog["block_name"]  %>">
                           
-                          <input id="input_for_change_project_name_<%= blog["_id"]  %>"  name = "edit_name_input" type="text" placeholder="Your Name *" />
-                            
-                        <button onclick = "change_project_name('<%= blog._id  %>')" class="project_button" type="submit">edit</button>
+                          <input id="input_for_change_project_name_<%= blog["_id"]  %>"  name = "inputed_name" type="text" placeholder="Your Name *" required />
+                          <% if(typeof alert != 'undefined') { %>
+                            <h3> <%= alert %></h3>
+                 <% } %> 
+                        <button class="project_button" type="submit">edit</button>
+                         </form>
                         <button class="cerrar1" onclick="cerrar_setting(this)">X</button>
                         </div>
                     </div>

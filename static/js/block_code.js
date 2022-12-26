@@ -241,7 +241,7 @@ const blocks=[
         "type":"about",
         "img":"/img/templates/A1.png",
         "codes": "<div class='section sA1'>\
-        <h4 class='texto_centro text7y88098hdf hA1'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)' >Blog1</h4>  \
+        <div class='texto_centro text7y88098hdf hA1'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)' >Blog1</div>  \
         <div class='text-muted text7y88098hdf dA1' ondblclick='change_text(this)' onclick='selected_text(event, this)' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
             cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
             deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
@@ -265,8 +265,8 @@ const blocks=[
         "img":"/img/templates/A3.png",
         "codes": "    <div class='section sA3'>\
         <img class='iA3  i8938423740298341730' src='/img/desca.jpeg'>\
-        <h4 class='texto_centro text7y88098hdf' contenteditable='true' onkeypress='change_text1(event,this)'    >Blog1</h4>  \
-        <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'  >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+        <div class='texto_centro text7y88098hdf' contenteditable='true' onkeypress='change_text1(event,this)'    >Blog1</div>  \
+        <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'  >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
             cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. \
     </div>"} ,
     {
@@ -275,10 +275,10 @@ const blocks=[
         "img":"/img/templates/A4.png",
         "codes": "    <div class='section sA4'>\
         \
-        <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'  >Blog1</h4>  \
-        <p class='text-muted text7y88098hdf dA4'   contenteditable='true' onkeypress='change_text1(event,this)' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+        <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'  >Blog1</div>  \
+        <div class='text-muted text7y88098hdf dA4'   contenteditable='true' onkeypress='change_text1(event,this)' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
             cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. \
-        </p>\
+        </div>\
         <img class='iA4  i8938423740298341730' src='/img/desca.jpeg'>\
     </div>"} ,
     {
@@ -291,13 +291,13 @@ const blocks=[
         </div>\
         \
         <div class='texto tA5'>\
-            <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</h4>    \
-            <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+            <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</div>    \
+            <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
                 cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
                 deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
                  adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, \
                  deleniti numquam nisi temporibus\
-            </p>\
+            </div>\
         </div> </div>"} ,
     {
         "name":"A6",
@@ -306,13 +306,13 @@ const blocks=[
         "codes": "    <div class='section sA6'>\
         \
          <div class='texto tA6'>\
-             <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'   >Blog1</h4>   \
-             <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+             <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'   >Blog1</div>   \
+             <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
                  cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
                  deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
                   adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, \
                   deleniti numquam nisi temporibus\
-             </p>\
+             </div>\
          </div>\
          <div class = 'faA6'>\
          <img class='iA6 i8938423740298341730' src='/img/descarga.jpeg'>\
@@ -323,13 +323,13 @@ const blocks=[
         "type":"about",
         "img":"/img/templates/A7.png",
         "codes": "    <div class='section sA7'>\
-        <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'  >Blog1</h4>  \
-        <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'   >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+        <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'  >Blog1</div>  \
+        <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'   >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
             cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
             deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
             adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, \
             deleniti numquam nisi temporibus\
-        </p>\
+        </div>\
         <div class='pictures pA7'>\
             <img class='iA7  i8938423740298341730' src='/img/color.jpg'>\
             <img class='iA7 i8938423740298341732' src='/img/desca.jpeg'>\
@@ -352,13 +352,13 @@ const blocks=[
             </div>\
         </div>\
         <div class='texto tA8'>\
-            <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</h4>    \
-            <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+            <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</div>    \
+            <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
                 cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
                 deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
                 adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, \
                 deleniti numquam nisi temporibus\
-            </p>\
+            </div>\
         </div>\
     </div>"} ,
     {
@@ -371,13 +371,13 @@ const blocks=[
         </div>\
         \
         <div class='texto tA9'>\
-            <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</h4>    \
-            <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+            <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</div>    \
+            <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
                 cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
                 deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
                 adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, \
                 deleniti numquam nisi temporibus\
-            </p>\
+            </div>\
         </div>\
     </div>"} ,
     {
@@ -396,13 +396,13 @@ const blocks=[
             </div>\
         </div>\
         <div class='texto tA10 '>\
-            <h4 class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</h4>    \
-            <p class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
+            <div class='texto_centro text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'    >Blog1</div>    \
+            <div class='text-muted text7y88098hdf'  contenteditable='true' onkeypress='change_text1(event,this)'  ondblclick='change_text(this)' onclick='selected_text(event, this)'     >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, fuga officia aliquam ullam ipsa vitae modi natus nisi veniam in \
                 cum quo quidem eaque sit? Sequi animi mollitia hic! Laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dignissimos, sed ratione, facere \
                 deleniti tempora debitis rerum impedit architecto commodi et temporibus quibusdam laboriosam quam odit aperiam odio culpa. Lorem ipsum dolor sit amet consectetur\
                 adipisicing elit. Necessitatibus nobis consequatur error commodi nostrum odit inventore! Recusandae fugit repellendus hic nulla reprehenderit at nam, natus obcaecati, \
                 deleniti numquam nisi temporibus\
-            </p>\
+            </div>\
         </div>\
     </div>"} 
 ]

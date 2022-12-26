@@ -18,6 +18,13 @@ const userSchema =  new Schema({
         publich:{
             type:Boolean,
             default:false
+        },
+        domen:{
+            type:String
+        }
+        ,
+        seo:{
+            type:String 
         }
     }]
 })

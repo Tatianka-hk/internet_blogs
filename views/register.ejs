@@ -10,9 +10,9 @@
     <section class="page-section" id="register">
         <form id = "registerForm" method="post">
             <div class="mb-1">
-                        <input class="form-control" name="name" type="text" placeholder="Your Login *"  />
-                        <input class="form-control" name="email" type="email" placeholder="Your Email *"  />
-                        <input class="form-control" name="password" type="password" placeholder="Your Password *" />
+                        <input class="form-control" name="name" type="text" placeholder="Your Login *"  required/>
+                        <input class="form-control" name="email" type="email" placeholder="Your Email *"  / required>
+                        <input class="form-control" name="password" type="password" placeholder="Your Password *" required minlength="8"/>
                     </div>
                     <div class="errors" >
                         <% if(typeof alert != 'undefined') { %>

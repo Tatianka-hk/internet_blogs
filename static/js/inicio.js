@@ -10,6 +10,6 @@ function sent_token_to_login() {
     xhr_demo.open('GET',`/auth/login`, true);
     xhr_demo.setRequestHeader(  'Content-Type', 'application/json;charset=UTF-8' );
     xhr_demo.setRequestHeader('authorization'  , token)
-    xhr_demo.send(JSON.stringify({ 'token':token, act:'login' }));
+    xhr_demo.send();
     //  window.location.href=`auth/login`
 }

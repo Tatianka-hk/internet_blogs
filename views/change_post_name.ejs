@@ -3,14 +3,14 @@
     <%- include('./partials/head.ejs')  %> 
 <body id="page-top" class="loginBody">
     <nav>
-        <a class="brand" href="/">
+        <a class="brand" href="/user/<%= user_id  %>/blog/<%= blog_name %>/post/<%= post_name %>">
             FABULA
         </a>
     </nav>
     <section class="page-section" id="create_blog">
             <form id = "registerForm" method="post">
                 <div class="mb-1">
-                        <input class="form-control" name="name" type="text" placeholder="Post Name *"  />
+                        <input class="form-control" name="name" type="text" placeholder="Post Name *"  required/>
                         <div class="errors" >
                         <% if(typeof alert != 'undefined') { %>
                             <h3> <%= alert %></h3>
