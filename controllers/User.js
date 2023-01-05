@@ -19,15 +19,11 @@ exports.user_get=(req,res)=>{
                     res.render("account",{title:"Personal account", user:result})
                 })
                     .catch((error)=> {console.log(error)});
-                      //})
-            
-       
+                      //})      
    // }
     }catch(err){
         console.log(err)
     }
-    
-    
 }
 // cambiar nomdre de usario 
 //post ./user/:id/name
@@ -60,7 +56,7 @@ exports.delete_user = (req,res)=>{
         res.redirect("/")
    } catch (err) { console.log (err)}
  }
-
+// render page of creating blog
 // render /user/:id/create_blog
 exports.get_create_blog = (req,res)=>{
     try {
@@ -80,6 +76,7 @@ exports.post_create_blog = (req,res)=>{
         User
             .findOne ({ "blogs.domen":req.body.domen })
             .then((result)=>{ 
+                //if user published blog
                 if (result !=  null) { 
                     alerts.push("url ya exist")
                 }
@@ -89,25 +86,21 @@ exports.post_create_blog = (req,res)=>{
                 .then((result)=>{ 
                     if (result !=  null) { 
                         alerts.push("blog ya exist") 
-                    }
+                    }//if isn't errors here
                     if ( alerts.length === 0 ){
-                        console.log("tt")
-                        let new_blog={ block_name:req.body.name, domen:req.body.domen, seo:req.body.seo }
+                        let new_blog={ block_name:req.body.name, domen:req.body.domen}
                         User
                             .findOneAndUpdate({_id:req.params.id}, {$push: {blogs:new_blog}})
                             .then((result)=>{ res.redirect(`/user/${req.params.id}/blog/${req.body.name}`) });         
                     }  
+                    //if user didn't published blog
                     else{
-                        console.log("tut")
                         res.render("create_blog.ejs",{ title, alerts, user_id:req.params.id})
                     }     
                 }) 
                 
             }) 
-       
         // if there no are identical blog name or domen
-        console.log("alert" , alerts)
-       
     } catch(err){ console.log (err) }
 }
         
@@ -214,8 +207,6 @@ exports.post_publish = (req, res) =>{
                     .then(()=>{console.log("CHANGED")});
 
                 res.redirect(`/fabula/${url}/`);
-
-
         })
     }catch(err){ console.log(err) }
 
@@ -235,17 +226,12 @@ exports.get_view = (req, res)=>{
                 let data="";
                 let end="end827rifddfo"
                 result.forEach(section => {
-                //     console.log("++++++++++++++++++++++++++");
-                //     console.log(section)
                 data+=(section["code"]);data+=end 
-                //     console.log("++++++++++++++++++++++++++");;
-                
                  } ) 
-                
                 var i=0;
+                // change text
                 while( i < 0){
                     i = data.indexOf(`user/${result[0].user_id}/blog/${result[0].blog_name}/post/${result[0].post_name}`);
-                    // i += `user/${req.params.id}/blog/${req.params.blog_name}/post/`.length;
                     var inserted_text =`fabula/${req.params.id}/${result[0].post_name}`;
                     var removed_text = `user/${result[0].user_id}/blog/${result[0].blog_name}/post/${result[0].post_name}`;
                     var ii = i + removed_text.length;
@@ -258,5 +244,4 @@ exports.get_view = (req, res)=>{
                 //res.render("blog.ejs",{title:"Blog", sections:[]})
             }) 
     }catch(err){ console.log(err) }
-
 }

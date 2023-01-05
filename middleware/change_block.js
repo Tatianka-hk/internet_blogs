@@ -1,8 +1,7 @@
 const Block = require('../models/bloсk')
 const User = require('../models/user')
 
-
-// main function which exposrts
+// main functions which exports
 module.exports = {
     change:(act,user_id,name,s_name,s_id,scs, s_text,text_number,s_start, s_end, s_add, style, s_color)=>{ //user_id = user if, s_name = section name; scs = code // s_id = section id
         if(act=="add_block"){ add_block(user_id,name,s_name,scs)}   
@@ -33,13 +32,13 @@ module.exports = {
 }
 // add block
 function add_block(user_id,name,s_name,scs){
-    try{
+    try{// find user for checking if user does publish blog
         User
             .findOne({ id_user:user_id, "blog.block_name":name, "blog.block_name":true })
             .then((result)=>{
-                if (result != null ){
+                if (result != null ){// if blog is published
                     var domen = "";
-                    result["blogs"].forEach(section => { 
+                    result["blogs"].forEach(section => { //change array
                         if (section.block_name == name ){
                             domen = section.domen;  
                         }
@@ -48,12 +47,11 @@ function add_block(user_id,name,s_name,scs){
                         .find({ id_user:user_id, name_of_blog:name, post:false }).sort({ id:-1}).limit(1)
                         .then((result)=>{ 
                             var s_id = find_max(result);
-                           
                             var block = Block({ name_of_section:s_name, id:s_id, id_user:user_id, name_of_blog:name, code:scs, url:domen })   
                             block.save().then((result)=>{}).catch((error)=>{ console.log(error) });
                         })
                         .catch((error)=>{console.log(error)})
-                }
+                } //if user isn't published
                 else{
                     Block
                         .find({ id_user:user_id, name_of_blog:name, post:false }).sort({ id:-1}).limit(1)
@@ -64,10 +62,7 @@ function add_block(user_id,name,s_name,scs){
                         })
                         .catch((error)=>{console.log(error)})
                 }
-
             })
-
-       
     }catch(err){ console.log(err) }
 }
 // delete block
@@ -91,12 +86,13 @@ function demo(s_id){
         .then((result)=>{})
         .catch((error)=>console.log(error))
 }
+// button "down"
 function down(s_id,name,user_id){
-    console.log("down")
     Block
         .find({ id_user:user_id, post:false, name_of_blog:name, id:{ $gte:s_id }}).sort({ id:1 })
         .then((result)=>{
             if ( result.length > 1 ){
+                //swip attributes id
                 var temp_value = result[1].id;
                 Block.updateOne({ id:result[1].id, post:false },{ id:s_id }).then((result)=>{}).catch((error)=>console.log(error));
                 Block.updateOne({ id:result[0].id , post:false},{ id:temp_value }).then((result)=>{}).catch((error)=>console.log(error));
@@ -104,39 +100,36 @@ function down(s_id,name,user_id){
         })
         .catch((error)=>{console.log(error)})
 }
+//find maximum id
 function find_max(result){
     var s_id;
-    console.log(result)
     if(result.length){
         s_id = result[0].id;
        s_id++;
-
    }
    else{s_id=0;}
    return s_id;
 }
-
+// button "up"
 function up(s_id,name,user_id){
-    console.log("s_id - ", s_id)
     Block
         .find({ id_user:user_id, name_of_blog:name, id:{ $lte: s_id}, post:false }).sort({ id: -1 })
         .then((result)=>{
             console.log(result)
             if ( result.length != 0 ){
                 if ( result.length > 1 ){
+                    //swip attributes id
                     var temp_value = result[1].id;
                     Block.updateOne({ id:result[1].id, post:false },{ id:s_id}).then((result)=>{}).catch((error)=>console.log(error));
                     Block.updateOne({ id:result[0].id, post:false },{ id:temp_value }).then((result)=>{}).catch((error)=>console.log(error));
-                    console.log(result)
                 } 
             }
         })
         .catch((error)=>{console.log(error)})
 }
 
-
+//change text
 function change_text(s_id, s_text,text_number){// text_number = number of text in section ; s_text =  changed text 
-    console.log("change text")
     Block
         .findByIdAndUpdate(s_id)
         .then((result)=>{
@@ -159,9 +152,7 @@ function change_text(s_id, s_text,text_number){// text_number = number of text i
             Block
                 .findByIdAndUpdate(s_id, {code:scs})
                 .then((result)=>{console.log("CHANGED")});
-        })
-    
-   
+        })  
 }
 
 //change background color
@@ -183,6 +174,3 @@ function change_font(s_id, s_color){
          .findByIdAndUpdate(s_id, { text_font:s_color })
          .then((result)=>{console.log("CHANGED")})
 }
-
-
-// module.exports = { find_max, change }

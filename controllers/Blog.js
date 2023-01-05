@@ -9,6 +9,7 @@ exports.blog_get = (req, res)=>{
         Block
             .find({ id_user:req.params.id , name_of_blog:req.params.name }).sort({ id:1 })
             .then((result)=>{ 
+                //process text
                 var data = "";
                 var end = "end827rifddfo"
                 result.forEach(section => {
@@ -25,8 +26,6 @@ exports.blog_post = (req,res)=>{
         change(req.body.act,req.params.id, req.params.name, req.body.s_name, req.body.s_id, req.body.scs, req.body.s_text, req.body.text_number , req.body.s_start, req.body.s_end, req.body.s_add, req.body.style, req.body.s_color, req.body.is_post)
         res.redirect(`/user/${req.params.id}/blog/${req.body.name}`)
     } catch(err){ console.log(err) }
-    
-    
 }
 // get /user/:user_id/blog/:blog_id/create_post
 exports.get_create_post = (req,res)=>{
@@ -54,7 +53,6 @@ exports.post_create_post = (req,res)=>{
         .findOne({ id_user:req.params.id, post:false, name_of_blog:req.params.name, name_of_section:'posts'})
         .then((result)=>{
             // if post aren't exist 
-            
             let post={ post_name:req.body.name }
             if (result == null){
                 Block 
@@ -70,7 +68,7 @@ exports.post_create_post = (req,res)=>{
             else{
                 result["posts"].forEach(pos =>{
                     if (pos.post_name == req.body.name){
-                        alert = 'post ya is exicted'
+                        alert = 'post ya is existed'
                     }
             })
             // add post
@@ -86,12 +84,12 @@ exports.post_create_post = (req,res)=>{
                 }
             } 
         })
-    }catch(err){ console.log(err) }
-       
+    }catch(err){ console.log(err) }    
 }
-
+//upload 1 image
 exports.blog_upload_file = (req,res)=>{
     try{
+        //create image
         var obj = {
             data: fs.readFileSync(path.join(path.dirname(__dirname)) + '/uploads/' + req.file.filename),
             contentType: 'image/png'
@@ -99,22 +97,23 @@ exports.blog_upload_file = (req,res)=>{
         Block
             . findByIdAndUpdate(req.params.s_id)
             .then((result)=>{
+                //process text
                 code = result["code"];
                 var inserted_text = `i8938423740298341730' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341730") ) ;
                 temp_code +=  inserted_text+"'";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341730") + 45  ) ;
+                //save image in bd
                 Block
                     .findByIdAndUpdate(req.params.s_id, {img1:obj, code:temp_code})
                     .then((result)=>{console.log("CHANGED")});
             })
     }catch(err){console.log(err)}
-        
-    
 }
-
+//upload 2 image
 exports.blog_upload_file2 = (req,res)=>{
     try{
+         //create image
         var obj = {
             data: fs.readFileSync(path.join(path.dirname(__dirname)) + '/uploads/' + req.file.filename),
             contentType: 'image/png'
@@ -122,22 +121,22 @@ exports.blog_upload_file2 = (req,res)=>{
         Block
             . findByIdAndUpdate(req.params.s_id)
             .then((result)=>{
+                 //process text
                 code=result["code"];
                 var inserted_text = `i8938423740298341732' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341732") ) ;
                 temp_code+= inserted_text+"'";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341732") + 45  ) ;
+                //save image in bd
                 Block
                     .findByIdAndUpdate(req.params.s_id, {img2:obj, code:temp_code})
                     .then((result)=>{console.log("CHANGED")});
             })
     }catch(err){console.log(err)}
-        
-    
 }
-
+//upload 3 image
 exports.blog_upload_file3 = (req,res)=>{
-    try{
+    try{//create image
         var obj = {
             data: fs.readFileSync(path.join(path.dirname(__dirname)) + '/uploads/' + req.file.filename),
             contentType: 'image/png'
@@ -145,21 +144,22 @@ exports.blog_upload_file3 = (req,res)=>{
         Block
             . findByIdAndUpdate(req.params.s_id)
             .then((result)=>{
+                //process text
                 code=result["code"];
                 var inserted_text = `i8938423740298341733' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341733") ) ;
                 temp_code+= inserted_text+"'";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341733") + 45  ) ;
+                 //save image in bd
                 Block
                     .findByIdAndUpdate(req.params.s_id, {img3:obj, code:temp_code})
                     .then((result)=>{console.log("CHANGED")});
             })
-    }catch(err){console.log(err)}
-        
-    
+    }catch(err){console.log(err)} 
 }
+//upload 4 image
 exports.blog_upload_file4 = (req,res)=>{
-    try{
+    try{//create image
         var obj = {
             data: fs.readFileSync(path.join(path.dirname(__dirname)) + '/uploads/' + req.file.filename),
             contentType: 'image/png'
@@ -167,16 +167,16 @@ exports.blog_upload_file4 = (req,res)=>{
         Block
             . findByIdAndUpdate(req.params.s_id)
             .then((result)=>{
+                //process text
                 code=result["code"];
                 var inserted_text = `i8938423740298341734' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341734") ) ;
                 temp_code+= inserted_text+"'";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341734") + 45  ) ;
+                  //save image in bd
                 Block
                     .findByIdAndUpdate(req.params.s_id, {img4:obj, code:temp_code})
                     .then((result)=>{console.log("CHANGED")})
             })
     }catch(err){console.log(err)}
-        
-    
 }
