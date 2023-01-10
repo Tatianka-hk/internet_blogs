@@ -28,18 +28,27 @@
         Copyright &copy; Your Website 2022
     </footer>
   <script>
-// at = localStorage.getItem('access_token')
+at = localStorage.getItem('token')
 if ( '<%= token %>' != 'undefined') {
 try{
     
     console.log("try")
-    localStorage.setItem(' token', '<%= token %>'); 
-    var xhr = new window.XMLHttpRequest()
-    xhr.open('GET', '<%= url %>', true);
-    xhr.setRequestHeader(  'Content-Type', 'application/json;charset=UTF-8' );
-    xhr.setRequestHeader('authorization'  , '<%= token %>' )
-    xhr.send();
-
+    localStorage.setItem('token', '<%= token %>'); 
+    // var xhr = new window.XMLHttpRequest()
+    // xhr.open('GET', '<%= url %>', true);
+    // xhr.setRequestHeader(  'Content-Type', 'application/json;charset=UTF-8' );
+    // xhr.setRequestHeader('authorization'  , '<%= token %>' )
+    // xhr.send();
+    // at = localStorage.getItem('token')
+    fetch( '<%= url %>', {
+        method: 'get',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            'Authorization': '<%= token %>'
+        }
+    } ).then( window.location.href = '<%= url %>' )
+        .then(  );
 } catch(err){
     // console.log(error)
 }

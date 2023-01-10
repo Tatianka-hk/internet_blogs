@@ -1,3 +1,15 @@
+// id =  find_user_id();
+// at = localStorage.getItem('token')
+// fetch( `/user/${id}`, {
+//     method: 'get',
+//     headers: {
+//         'Accept': 'application/json, text/plain, */*',
+//         'Content-Type': 'application/json',
+//         'Authorization': at
+//     }
+// } ).then( res => res.json() )
+//     .then(  );
+
 //para cerrar o abrir grid
 function button_on_click(){
     if( document.getElementById("left").style.display =='grid'){
@@ -37,7 +49,6 @@ function lwindow(){
         document.getElementById("Footer").style.position='absolute';
     }
 }
-
 
 // encontrada id de usario 
 function find_user_id(){
@@ -83,7 +94,7 @@ function delete_project(obj){
       xhr_demo.open('DELETE',`/user/${id}/delete_porject/${obj}`, true)
       xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
       xhr_demo.send()
-    //    window.location.reload()
+      window.location.reload()
 }
 
 // publish

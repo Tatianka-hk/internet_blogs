@@ -13,6 +13,7 @@ router.post('/user/:id/change_project_name/:name',  AuthController.put_project_n
 router.delete('/user/:id/delete_porject/:name', AuthController.delete_porject);
 router.post('/user/:id/publish_project/:name', AuthController.post_publish);
 router.get('/fabula/:id', AuthController.get_view);
+router.get('/fabula/:id/post/:name', AuthController.get_post_view);
 module.exports = router;
 
 

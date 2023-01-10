@@ -10,6 +10,8 @@ require('dotenv').config();
 const app =  express();
 const PORT = process.env.PORT || 3000;
 
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/static'));
 app.use(express.urlencoded({ extended: true }))
@@ -37,5 +39,3 @@ mongoose
 app.listen(PORT, (error) => {
   error ? console.log(error) : console.log(`listening port ${PORT}`);
 })
-
-//add

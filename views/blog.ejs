@@ -108,33 +108,6 @@
                             <button class="button_change" onclick="change_text_color('<%= section._id %>')">Change text color</button>
                         </div>
                             <hr style=" height: 0.3px; width: 100%; background-color: #000000;">
-                            <!-- <div class="change_block">
-                        <br>
-                                <div class="change_style_caja2">
-                                    Size: 
-                                    <select class='herramineta in_change_style' name='Size'>
-                                        <option disabled>Size</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>4</option>
-                                        <option>6</option>
-                                        <option>8</option>
-                                        <option>10</option>
-                                        <option>12</option>
-                                        <option>16</option>
-                                        <option>18</option>
-                                        <option>20</option>
-                                        <option>22</option>
-                                        <option>24</option>
-                                        <option>26</option>
-                                        <option>28</option>
-                                        <option>30</option>
-                                    </select>
-                                    <button  class="button_change">Change text size</button>
-                                   
-                                    </div>
-                                </div>
-                                    <hr style=" height: 0.3px; width: 100%; background-color: #000000;"> -->
                                     <div class="change_block">
                                     <div class="change_style_caja2">
                                     Font: 
@@ -230,11 +203,10 @@
                     <div class="setting" id='s<%= section.id %>'  style = "display:<%= section.hide %>">
                         <div class ="right">
                             <button class="section_setting" onclick='show_setting("<%= section._id %>")'><img class="img_setting" src="/img/edit.png"></button>
-                            <button class="section_setting" onclick='act("delete", "<%= section._id %>" , this)' id="delete<%= section.id %>"><img class="img_setting"  src="/img/delete.png"></button>
+                            <button class="section_setting" onclick='delete_block("delete", "<%= section._id %>")' id="delete<%= section.id%>"><img class="img_setting"  src="/img/delete.png"></button>
                             <button class="section_setting" onclick='act("hide","<%= section._id %>")' id="hide<%= section.id %>"><img class="img_setting"  src="/img/on.png"></button>
                             <button class="section_setting" onclick='act("up","<%= section.id %>")'>▲</button>
                             <button class="section_setting" onclick='act("down","<%= section.id %>")'>▼</button>
-                            
                         </div>
                     </div>
                     

@@ -63,7 +63,7 @@ function find_user_id(){
     position1 += 6;
     var position2 = window.location.href.search("/blog");
     var str = window.location.href;
-    var user_id = str.substring(position1,position2)
+    var user_id = str.substring(position1,position2);
     return user_id
 
 }
@@ -72,23 +72,31 @@ function find_blog_name(){
     var position1 = window.location.href.search("/blog");
     position1 += 6;
     var str = window.location.href;
-    var blog_name = str.substring(position1) 
+    var blog_name = str.substring(position1);
     return blog_name
 
 }
 //change block
 function act(act_s, id, ob){
-    var user_id = find_user_id()
-    var blog_name = find_blog_name()
-    var xhr_demo = new window.XMLHttpRequest()
-    xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
-    xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-    xhr_demo.send(JSON.stringify({act:act_s, s_id:id, is_post:false    }))
-    window.location.reload()
-    
-
+    var user_id = find_user_id();
+    var blog_name = find_blog_name();
+    var xhr_demo = new window.XMLHttpRequest();
+    xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true);
+    xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr_demo.send(JSON.stringify({act:act_s, s_id:id, is_post:false    }));
+    window.location.reload();
 }
 
+function delete_block(act_s, id){
+    var user_id = find_user_id();
+    var blog_name = find_blog_name();
+    var xhr_demo = new window.XMLHttpRequest();
+    xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true);
+    xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr_demo.send(JSON.stringify({act:act_s, s_id:id, is_post:false, name:blog_name, user_id:user_id }));
+    window.location.reload();
+
+}
 
 
 function change_text1(event,ob){
@@ -100,7 +108,7 @@ function change_text1(event,ob){
         if (texts[i]== ob){  text_number = i }
     }
     //find section_id
-    while (parnode.getAttribute('id') == null){//while DOM element hasn't atribute "ID"
+    while (parnode.getAttribute('id') == null){//while DOM element hasn't attribute "ID"
         parnode = parnode.parentNode;
      }
      

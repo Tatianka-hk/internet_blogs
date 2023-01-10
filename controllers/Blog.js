@@ -2,6 +2,7 @@ const {change, find_max} = require('../middleware/change_block')
 var fs = require('fs');
 var path = require('path');
 const Block = require('../models/bloсk')
+const User = require('../models/user')
 
 // get /user/:user_id/blog/:blog_id
 exports.blog_get = (req, res)=>{
@@ -44,7 +45,7 @@ exports.get_create_post = (req,res)=>{
 
 //post /user/:user_id/blog/:blog_id/create_post
 exports.post_create_post = (req,res)=>{
-    try{
+    try{//process text
         var now = new Date();
         code = `<div class='section post'><a class='texto_centro a' href='/user/${req.params.id}/blog/${req.params.name}/post/${req.body.name}'>${req.body.name}</a>${now}</div>` ;
         const title = "Creating post";
@@ -59,9 +60,27 @@ exports.post_create_post = (req,res)=>{
                     .find({ id_user:req.params.id, post:false, name_of_blog:req.params.name})
                     .then((result)=>{
                         var s_id = find_max(result);
-                        let block = new Block({ code:code, post:false, name_of_section:'posts', id_user:req.params.id,  name_of_blog:req.params.name, data:now , posts:post, id:s_id });
-                        block.save();
-                        res.redirect(`/user/${req.params.id}/blog/${req.params.name}/post/${req.body.name}`)
+                        User//find user for find out if user does publish
+                            .findOne({ id_user:req.params.user_id, "blogs.block_name":req.params.name, "blogs.publich":true })
+                            .then((result)=>{// if user published blog
+                                if (result != null ){
+                                    var url = "";
+                                    result["blogs"].forEach(section => { //change array
+                                        if (section.block_name == req.params.name ){
+                                            url = section.domen;  
+                                        }
+                                    } ) //save block in bd
+                                    let block = new Block({ code:code, post:false, name_of_section:'posts', id_user:req.params.id,  name_of_blog:req.params.name, data:now , posts:post, id:s_id, url });
+                                    block.save();
+                                }
+                                else{
+                                    let block = new Block({ code:code, post:false, name_of_section:'posts', id_user:req.params.id,  name_of_blog:req.params.name, data:now , posts:post, id:s_id });
+                                    block.save();
+                                }
+
+                                res.redirect(`/user/${req.params.id}/blog/${req.params.name}/post/${req.body.name}`)
+                            })
+                            .catch((error) => console.log(error))
                     })
             }
             // if post name ya is there

@@ -1,5 +1,4 @@
 const { validationResult } = require('express-validator');
-
 // get /
 exports.inicio_get = (req, res) => {
     try{
@@ -24,6 +23,5 @@ exports.inicio_post = (req, res) => {
             res.render('index', { title } );
         }
 
-    }catch(err){ console.log(err)}
-    
+    }catch(err){ console.log(err)}  
 }

@@ -15,7 +15,7 @@ exports.register_get =(req,res) => {
 // post auth/register 
 exports.register_post =  (req,res) => {
     const title = 'Register';
-    //vaidate data
+    //validate data
     const errors = validationResult(req);
      //output errors
     if(!errors.isEmpty()) {
@@ -46,7 +46,7 @@ exports.login_get =  (req,res) =>{
 // post auth/login 
 exports.login_post = (req,res) =>{
     const title = 'Login';
-    //vaidate data
+    //validate data
     const errors = validationResult(req);
      //output errors
     if( !errors.isEmpty() ) {
@@ -60,13 +60,13 @@ exports.login_post = (req,res) =>{
             .findOne({ name:req.body.name , password:pas })//verifity user
             .then((result)=>{ 
                 if ( result!= null ){
-                    var UserTokenData =  generateUserTokenData(result);
-                    token= jwt.sign({ user:UserTokenData } , process.env.ACCESS_TOKEN_SECRET, { expiresIn: '3h' });
+                    var UserTokenData =  generateUserTokenData(result);//generate token
+                    // token= jwt.sign({ user:UserTokenData } , process.env.ACCESS_TOKEN_SECRET, { expiresIn: '3h' });
                     // res.render('login', { title, url: `/user/${result["_id"]}` , token })
                     res.redirect( `/user/${result["_id"]}` );
                 }                
                 else{
-                    const no_matching="no correct"
+                    const no_matching="no correct";
                     res.render('login', { title,no_matching ,  token : 'indefined', url : '/' })// output error
                 }
             }).catch((error)=>{

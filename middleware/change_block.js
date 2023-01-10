@@ -5,7 +5,7 @@ const User = require('../models/user')
 module.exports = {
     change:(act,user_id,name,s_name,s_id,scs, s_text,text_number,s_start, s_end, s_add, style, s_color)=>{ //user_id = user if, s_name = section name; scs = code // s_id = section id
         if(act=="add_block"){ add_block(user_id,name,s_name,scs)}   
-        else if(act == "delete"){delete_block(s_id)}
+        else if(act == "delete"){delete_block(s_id, user_id, name)}
         else if(act == "hide"){hide_block(s_id)}
         else if(act == "demo"){demo(s_id)}
         else if(act == "up"){up(s_id,name,user_id)}
@@ -19,7 +19,6 @@ module.exports = {
     },
     find_max:(result)=>{
         let s_id;
-        console.log(result)
         if(result.length){
             s_id = result[0].id;
            s_id++;
@@ -34,8 +33,9 @@ module.exports = {
 function add_block(user_id,name,s_name,scs){
     try{// find user for checking if user does publish blog
         User
-            .findOne({ id_user:user_id, "blog.block_name":name, "blog.block_name":true })
+            .findOne({ id_user:user_id, "blogs.block_name":name, "blogs.publich":true })
             .then((result)=>{
+                var s_id = find_max(result);
                 if (result != null ){// if blog is published
                     var domen = "";
                     result["blogs"].forEach(section => { //change array
@@ -46,7 +46,7 @@ function add_block(user_id,name,s_name,scs){
                     Block
                         .find({ id_user:user_id, name_of_blog:name, post:false }).sort({ id:-1}).limit(1)
                         .then((result)=>{ 
-                            var s_id = find_max(result);
+                           
                             var block = Block({ name_of_section:s_name, id:s_id, id_user:user_id, name_of_blog:name, code:scs, url:domen })   
                             block.save().then((result)=>{}).catch((error)=>{ console.log(error) });
                         })
@@ -66,7 +66,17 @@ function add_block(user_id,name,s_name,scs){
     }catch(err){ console.log(err) }
 }
 // delete block
-function delete_block(s_id){ // s_id = section id
+function delete_block(s_id, user_id, name){ // s_id = section id
+    Block
+        .findById(s_id)
+        .then((result)=>{
+            if (result.name_of_section == "posts"){
+                Block
+                    .deleteMany({ id_user: user_id, name_of_blog: name, post:true})
+                    .then((result)=>{ })
+                    .catch((error)=>console.log(error))
+            }
+        })
     Block
         .deleteOne({ _id:s_id })
         .then((result)=>{ })
@@ -115,7 +125,6 @@ function up(s_id,name,user_id){
     Block
         .find({ id_user:user_id, name_of_blog:name, id:{ $lte: s_id}, post:false }).sort({ id: -1 })
         .then((result)=>{
-            console.log(result)
             if ( result.length != 0 ){
                 if ( result.length > 1 ){
                     //swip attributes id
