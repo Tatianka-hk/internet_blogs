@@ -80,6 +80,7 @@ function find_blog_name(){
 function act(act_s, id, ob){
     var user_id = find_user_id();
     var blog_name = find_blog_name();
+    console.log("aqui")
     var xhr_demo = new window.XMLHttpRequest();
     xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true);
     xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -135,7 +136,9 @@ function change_text1(event,ob){
         xhr_demo.open('POST',`/user/${user_id}/blog/${blog_name}`, true)
         xhr_demo.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
         xhr_demo.send(JSON.stringify({ act:"change_text", s_text:text_from_user, text_number:text_number, s_id:section_number}))
-        window.location.reload()
+        console.log("ok")
+        setTimeout(window.location.reload(), 15000);
+        setTimeout(console.log("yes"), 15000);
     }
 }
 

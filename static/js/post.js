@@ -106,7 +106,7 @@ function change_text1(event,ob){
             var index1 =  text_from_user.indexOf('&lt;');
             text_from_user = text_from_user.substring(0, index1)+'<'+text_from_user.substring(index1+4);
          }
-         while (text.includes('&gt;') == true){
+         while (text_from_user.includes('&gt;') == true){
             var index =  text_from_user.indexOf('&gt;');
             text_from_user = text_from_user.substring(0, index)+'>'+text_from_user.substring(index+4)
          }
@@ -114,7 +114,8 @@ function change_text1(event,ob){
             var index =  text_from_user.indexOf('"');
             text_from_user = text_from_user.substring(0, index)+"'"+text_from_user.substring(index+1)
          }
-        
+        console.log(" 13");
+        console.log(text_from_user);
         // find parameters from link
         var user_id = find_user_id();
         var blog_name = find_blog_name();
@@ -545,7 +546,6 @@ function choose_font(s_id){
   
 }
 
-
 function delete_post(){
     // find parameters from link
     var user_id = find_user_id();
@@ -558,7 +558,3 @@ function delete_post(){
     xhr_demo.send();
     window.location.href=`/user/${user_id}/blog/${blog_name}`;
 }
-
-
-
-

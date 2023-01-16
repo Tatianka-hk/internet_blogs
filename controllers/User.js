@@ -105,7 +105,7 @@ exports.put_project_name = (req, res)=>{
             // find out if blog is existed
             result["blogs"].forEach(section => { 
                 console.log(section)
-                if (section.block_name == req.body.inputed_name ){
+                if (section.name_of_blog == req.body.inputed_name ){
                     alert = 'blog is ya exist';
                     
                 }
@@ -123,7 +123,7 @@ exports.put_project_name = (req, res)=>{
                     .then(()=>{console.log("Changed")});
                     //save blog
                 Block
-                    .updateMany({ blog_name:req.params.name, user_id:req.params.is }, { blog_name:req.body.name })
+                    .updateMany({ name_of_blog:req.params.name, user_id:req.params.is }, { name_of_blog:req.body.name })
                     .then(()=>{console.log("Changed")});
                 res.redirect(`/user/${req.params.id}`);
             }

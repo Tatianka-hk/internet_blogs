@@ -1,4 +1,4 @@
-const { change_password,generateUserTokenData  } = require('../middleware/for_auth');
+const { change_password  } = require('../middleware/for_auth');
 const User = require('../models/user');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
@@ -28,8 +28,6 @@ exports.register_post =  (req,res) => {
         user.save()
             .then(()=>{ res.redirect(`/user/${user._id}`)})
             .catch((error)=>{console.log(error)});
-            // var UserTokenData = generateUserTokenData(user)
-            // token= jwt.sign({ user:UserTokenData } , process.env.ACCESS_TOKEN_SECRET, { expiresIn: '3h' })
             console.log("rue")
            
     }
@@ -60,18 +58,15 @@ exports.login_post = (req,res) =>{
             .findOne({ name:req.body.name , password:pas })//verifity user
             .then((result)=>{ 
                 if ( result!= null ){
-                    var UserTokenData =  generateUserTokenData(result);//generate token
-                    // token= jwt.sign({ user:UserTokenData } , process.env.ACCESS_TOKEN_SECRET, { expiresIn: '3h' });
-                    // res.render('login', { title, url: `/user/${result["_id"]}` , token })
                     res.redirect( `/user/${result["_id"]}` );
                 }                
                 else{
                     const no_matching="no correct";
-                    res.render('login', { title,no_matching ,  token : 'indefined', url : '/' })// output error
+                    res.render('login', { title,no_matching })// output error
                 }
             }).catch((error)=>{
                 console.log(error)
                 const no_matching="no correct"
-                res.render('login', { title,no_matching,  token : 'indefined', url : '/' })});
+                res.render('login', { title,no_matching })});
     }
 }

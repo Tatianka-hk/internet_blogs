@@ -35,7 +35,7 @@ function add_block(user_id,name,s_name,scs){
         User
             .findOne({ id_user:user_id, "blogs.block_name":name, "blogs.publich":true })
             .then((result)=>{
-                var s_id = find_max(result);
+                
                 if (result != null ){// if blog is published
                     var domen = "";
                     result["blogs"].forEach(section => { //change array
@@ -46,7 +46,8 @@ function add_block(user_id,name,s_name,scs){
                     Block
                         .find({ id_user:user_id, name_of_blog:name, post:false }).sort({ id:-1}).limit(1)
                         .then((result)=>{ 
-                           
+                            var s_id = find_max(result);
+                            console.log(s_id)
                             var block = Block({ name_of_section:s_name, id:s_id, id_user:user_id, name_of_blog:name, code:scs, url:domen })   
                             block.save().then((result)=>{}).catch((error)=>{ console.log(error) });
                         })
@@ -77,6 +78,7 @@ function delete_block(s_id, user_id, name){ // s_id = section id
                     .catch((error)=>console.log(error))
             }
         })
+        .catch((error)=>console.log(error))
     Block
         .deleteOne({ _id:s_id })
         .then((result)=>{ })
@@ -104,8 +106,8 @@ function down(s_id,name,user_id){
             if ( result.length > 1 ){
                 //swip attributes id
                 var temp_value = result[1].id;
-                Block.updateOne({ id:result[1].id, post:false },{ id:s_id }).then((result)=>{}).catch((error)=>console.log(error));
-                Block.updateOne({ id:result[0].id , post:false},{ id:temp_value }).then((result)=>{}).catch((error)=>console.log(error));
+                Block.updateOne({ _id:result[1]._id, post:false },{ id:s_id }).then((result)=>{}).catch((error)=>console.log(error));
+                Block.updateOne({ _id:result[0]._id , post:false},{ id:temp_value }).then((result)=>{}).catch((error)=>console.log(error));
             }       
         })
         .catch((error)=>{console.log(error)})
@@ -122,6 +124,7 @@ function find_max(result){
 }
 // button "up"
 function up(s_id,name,user_id){
+    console.log("up")
     Block
         .find({ id_user:user_id, name_of_blog:name, id:{ $lte: s_id}, post:false }).sort({ id: -1 })
         .then((result)=>{
@@ -129,8 +132,12 @@ function up(s_id,name,user_id){
                 if ( result.length > 1 ){
                     //swip attributes id
                     var temp_value = result[1].id;
-                    Block.updateOne({ id:result[1].id, post:false },{ id:s_id}).then((result)=>{}).catch((error)=>console.log(error));
-                    Block.updateOne({ id:result[0].id, post:false },{ id:temp_value }).then((result)=>{}).catch((error)=>console.log(error));
+                    console.log(result[1].id)
+                    console.log(result[0].id)
+                    console.log(s_id)
+                    console.log(temp_value)
+                    Block.updateOne({ _id:result[1]._id, post:false },{ id:s_id}).then((result)=>{console.log("lol")});
+                    Block.updateOne({ _id:result[0]._id, post:false },{ id:temp_value }).then((result)=>{});
                 } 
             }
         })

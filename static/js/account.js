@@ -1,15 +1,3 @@
-// id =  find_user_id();
-// at = localStorage.getItem('token')
-// fetch( `/user/${id}`, {
-//     method: 'get',
-//     headers: {
-//         'Accept': 'application/json, text/plain, */*',
-//         'Content-Type': 'application/json',
-//         'Authorization': at
-//     }
-// } ).then( res => res.json() )
-//     .then(  );
-
 //para cerrar o abrir grid
 function button_on_click(){
     if( document.getElementById("left").style.display =='grid'){
@@ -45,8 +33,8 @@ function lwindow(){
     console.log(blogs)
     if(blogs.length <4){
         document.getElementById("main").style.position='absolute';
-        document.getElementById("Footer").style.marginBottom=0;
-        document.getElementById("Footer").style.position='absolute';
+    //     document.getElementById("Footer").style.marginBottom=0;
+    //     document.getElementById("Footer").style.position='absolute';
     }
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('./partials/head.ejs')  %> 
-<body  id="page-top" class='loginBody' onload='load_blocks("<%= data %>")' >
+<body  id="page-top" class='lolBody' onload='load_blocks("<%= data %>")' >
     <nav>
         <a class="brand" href="/user/<%= user_id %>/blog/<%= blog_name %>">
             FABULA
@@ -136,6 +136,22 @@
                     
                                 
                             </div>
+                            <% if ( section.name_of_section == 'image1') {%> 
+                                <hr style=" height: 2px; width: 100%; background-color: #000000;">
+                                                    <div class="change_block">
+                                 <form action="/user/<%= section.id_user %>/blog/<%= section.name_of_blog %> /post/<%= section.post_name %> /upload2/<%= section._id %> " method="POST" enctype="multipart/form-data">
+                                  <div>
+                                      <label for="image">Upload Image</label>
+                                      <input type="file" id="image"
+                                             name="image" value="" required>
+                                  </div>
+                                  <div>
+                                      <button type="submit">Submit</button>
+                                  </div>
+                                  </form>
+                                  </div>
+                            
+                              <% } %>
                         </div>
                             
                         <!-- <div class="content"> -->
@@ -177,6 +193,7 @@
                 <button class = "post_type"  style="background-image: url('/img/templates/dividir.png');" onclick="add_block_post('dividir')"></button>
                 <button class = "post_type"  style="background-image: url('/img/templates/Q1.png');" onclick="add_block_post('Q1')"></button>
                 <button class = "post_type"  style="background-image: url('/img/templates/Q2.png');" onclick="add_block_post('Q2')"></button>
+                <button class = "post_type"  style="background-image: url('/img/color.jpg');" onclick="add_block_post('image1')"></button>
             </div>
                     <button class="add_section" onclick="view_types_of_section()">
                         ADD

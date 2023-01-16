@@ -17,7 +17,6 @@ module.exports = {
     },
     find_max:(result)=>{
         let s_id;
-        console.log(result)
         if(result.length){
             s_id = result[0].id;
            s_id++;
@@ -31,7 +30,6 @@ module.exports = {
 // add block
 function add_block(user_id, blog_name, post_name,type_name, scs){
     var now = new Date();
-    console.log(blog_name)
     User//find user for find out if user does publish
     .findOne({ id_user:user_id, "blogs.block_name":blog_name, "blogs.publich":true })
     .then((result)=>{// if user published blog
@@ -46,11 +44,10 @@ function add_block(user_id, blog_name, post_name,type_name, scs){
                 .find({ id_user:user_id,name_of_blog:blog_name, post_name:post_name}).sort({order: -1}).limit(1)
                 .then((result)=>{ 
                     var s_id= find_max(result);
-                    console.log()
-                    var block = Block({type_name:type_name, id_user:user_id,name_of_blog:blog_name, post_name:post_name,code:scs, date:now, id:s_id, post:true, url })   
+                    var block = Block({name_of_section:type_name, id_user:user_id,name_of_blog:blog_name, post_name:post_name,code:scs, date:now, id:s_id, post:true, url })   
                     block
                          .save()
-                         .then((result)=>{console.log(result)})
+                         .then((result)=>{})
                          .catch((error)=>{console.log(error)});
                 }).catch((error)=>{console.log(error)})
         }
@@ -60,7 +57,7 @@ function add_block(user_id, blog_name, post_name,type_name, scs){
                 .find({ id_user:user_id,name_of_blog:blog_name, post_name:post_name}).sort({order: -1}).limit(1)
                 .then((result)=>{ 
                     var s_id= find_max(result);
-                    var block = Block({type_name:type_name, id_user:user_id,name_of_blog:blog_name, post_name:post_name,code:scs, date:now, id:s_id, post:true})   
+                    var block = Block({name_of_section:type_name, id_user:user_id,name_of_blog:blog_name, post_name:post_name,code:scs, date:now, id:s_id, post:true})   
                     block.save().then((result)=>{}).catch((error)=>{console.log(error)});
                 }).catch((error)=>{console.log(error)})
         }

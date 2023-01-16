@@ -8,7 +8,7 @@ const User = require('../models/user')
 exports.blog_get = (req, res)=>{
     try{
         Block
-            .find({ id_user:req.params.id , name_of_blog:req.params.name }).sort({ id:1 })
+            .find({ id_user:req.params.id , name_of_blog:req.params.name, post:false }).sort({ id:1 })
             .then((result)=>{ 
                 //process text
                 var data = "";
@@ -43,7 +43,7 @@ exports.get_create_post = (req,res)=>{
     } catch(error){console.log("error")}
 }
 
-//post /user/:user_id/blog/:blog_id/create_post
+//post /user/:id/blog/:name/create_post
 exports.post_create_post = (req,res)=>{
     try{//process text
         var now = new Date();
@@ -120,12 +120,13 @@ exports.blog_upload_file = (req,res)=>{
                 code = result["code"];
                 var inserted_text = `i8938423740298341730' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341730") ) ;
-                temp_code +=  inserted_text+"'";
+                temp_code +=  inserted_text+"'>";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341730") + 45  ) ;
                 //save image in bd
                 Block
                     .findByIdAndUpdate(req.params.s_id, {img1:obj, code:temp_code})
                     .then((result)=>{console.log("CHANGED")});
+                    // res.redirect(`/user/${req.params.id}/blog/${req.params.name}`)
             })
     }catch(err){console.log(err)}
 }
@@ -144,7 +145,7 @@ exports.blog_upload_file2 = (req,res)=>{
                 code=result["code"];
                 var inserted_text = `i8938423740298341732' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341732") ) ;
-                temp_code+= inserted_text+"'";
+                temp_code+= inserted_text+"'>";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341732") + 45  ) ;
                 //save image in bd
                 Block
@@ -167,7 +168,7 @@ exports.blog_upload_file3 = (req,res)=>{
                 code=result["code"];
                 var inserted_text = `i8938423740298341733' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341733") ) ;
-                temp_code+= inserted_text+"'";
+                temp_code+= inserted_text+"'>";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341733") + 45  ) ;
                  //save image in bd
                 Block
@@ -190,7 +191,7 @@ exports.blog_upload_file4 = (req,res)=>{
                 code=result["code"];
                 var inserted_text = `i8938423740298341734' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
                 var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341734") ) ;
-                temp_code+= inserted_text+"'";
+                temp_code+= inserted_text+"'>";
                 temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341734") + 45  ) ;
                   //save image in bd
                 Block

@@ -1,12 +1,13 @@
 const {change} = require('../middleware/change_post_block')
 const Block = require('../models/bloсk')
-
+var fs = require('fs');
+var path = require('path');
 // get /user/:id/blog/:blog_name/post/:post_name
 exports.get_post = (req, res)=>{
     try{
         Block
         .find({ user_id:req.params.id, post:true, blog_name:req.params.blog_name, post_name:req.params.post_name }).sort({ id:1 })
-        .then((result)=>{ 
+        .then((result)=>{ //process text
             var data = "";
             var end = "end827rifddfo"
             result.forEach(section => { data += (section["code"]); data += end; } ); 
@@ -31,41 +32,41 @@ exports.get_change_post_name =(req,res)=> {
 // post /user/:id/blog/:blog_name/post/:post_name/change_post_name
 exports.change_post_name = (req, res)=>{
     try{
-        let title = "change post name";
-        let alert = 'norm';
+        var title = "change post name";
+        var alert = 'norm';
         Block 
         .findOne({ id_user:req.params.id, name_of_blog:req.params.blog_name, name_of_section:'posts', post:false })
         .then((result)=>{
-            result["posts"].forEach( pos =>{
+            result["posts"].forEach( pos =>{//checking if post isn't existed
                 if (pos.post_name == req.body.name){
-                    alert = 'post ya is exicted'
+                    alert = 'post ya is existed'
                 }
             })
             if (alert == 'norm'){
                 //change text
-                let i=0;
+                var i=0;
                 i = result["code"].indexOf(`user/${req.params.id}/blog/${req.params.blog_name}/post/${req.params.post_name}`);
                 i += `user/${req.params.id}/blog/${req.params.blog_name}/post/`.length;
-                let inserted_text =`${req.body.name}'>${req.body.name}`;
-                let removed_text = `${req.params.post_name}'>${req.params.post_name}`;
-                let ii = i + removed_text.length;
-                let text = result["code"].substring(0, i) + inserted_text+result["code"].substring(ii);
+                var inserted_text =`${req.body.name}'>${req.body.name}`;
+                var removed_text = `${req.params.post_name}'>${req.params.post_name}`;
+                var ii = i + removed_text.length;
+                var text = result["code"].substring(0, i) + inserted_text+result["code"].substring(ii);
                 //change_array
                 result["posts"].forEach( pos =>{
                     if (pos.post_name == req.params.post_name){
                         pos.post_name = req.body.name
                     }
                 })
-                Block
+                Block//save block 'posts'
                     .findOneAndUpdate({ id_user:req.params.id, name_of_blog:req.params.blog_name , name_of_section:'posts', post:false }, { code:text, posts:result["posts"] })
                     .then(()=>{})
 
-                Block
+                Block//save post
                     .updateMany({ id_user:req.params.id, post_name:req.params.post_name, name_of_blog:req.params.blog_name, post:true }, { post_name:req.body.name })
                     .then(()=>{})
                 res.redirect(`/user/${req.params.id}/blog/${req.params.blog_name}/post/${req.body.name}`)
             }
-            else{
+            else{//output errors
                 res.render("change_post_name",{ title, alert, user_id:req.params.id, blog_name:req.params.blog_name, post_name:req.params.post_name })
             }
         })
@@ -106,7 +107,7 @@ exports.delete_post = (req, res)=>{
                             arra.push(pos);
                         }
                     })
-                    Block
+                    Block//save block 'post'
                         .findOneAndUpdate({ id_user:req.params.id, name_of_blog:req.params.blog_name , name_of_section:'posts', post:false }, { code:text,posts:arra })
                         .then(()=>{console.log("ADDED block")})
                 }
@@ -117,5 +118,30 @@ exports.delete_post = (req, res)=>{
 
         }) 
     }catch(err){ console.log(err)}
+}
 
+//upload 1 image
+exports.blog_upload_file = (req,res)=>{
+    try{
+        //create image
+        var obj = {
+            data: fs.readFileSync(path.join(path.dirname(__dirname)) + '/uploads/' + req.file.filename),
+            contentType: 'image/png'
+        }
+        Block
+            . findByIdAndUpdate(req.params.s_id)
+            .then((result)=>{
+                //process text
+                code = result["code"];
+                var inserted_text = `i8938423740298341730' src='data:image/${obj.contentType};base64,${obj.data.toString('base64')}`;
+                var temp_code = result["code"].substring(0,result["code"].indexOf("i8938423740298341730") ) ;
+                temp_code +=  inserted_text+"'";
+                temp_code += result["code"].substring(result["code"].indexOf("i8938423740298341730") + 45  ) ;
+                //save image in bd
+                Block
+                    .findByIdAndUpdate(req.params.s_id, {img1:obj, code:temp_code})
+                    .then((result)=>{console.log("CHANGED")});
+                    res.redirect(`/user/${req.params.id}/blog/${req.params.name}/post/${req.body.name}`)
+            })
+    }catch(err){console.log(err)}
 }
